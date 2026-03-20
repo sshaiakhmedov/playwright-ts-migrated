@@ -1,0 +1,42 @@
+{
+  "name": "playwright-ts-migrated",
+  "version": "1.0.0",
+  "description": "Playwright Test Framework (TypeScript)",
+  "main": "index.ts",
+  "type": "module",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test tests/ui",
+    "test:api": "docker compose up -d && npx playwright test tests/api; docker compose down",
+    "test:headed": "npx playwright test --headed",
+    "allure": "allure generate ./allure-results --clean && allure open ./allure-report",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix"
+    ]
+  },
+  "keywords": [
+    "playwright",
+    "typescript"
+  ],
+  "author": "Suleman Shaiakhmedov",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.52.0",
+    "allure-commandline": "^2.38.1",
+    "dotenv": "^17.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "allure-playwright": "^2.15.1",
+    "typescript": "^5.9.3"
+  }
+}

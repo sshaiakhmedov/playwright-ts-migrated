@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+# Husky pre-commit hook
+
+staged_files=$(git diff --cached --name-only)
+run_ui=false
+run_api=false
+
+for file in $staged_files; do
+  # Identify UI test triggers
+  if echo "$file" | grep -qE "^tests/ui/|^pages/|^components/|^util/fixtures\.ts"; then
+    run_ui=true
+  fi
+  
+  # Identify API test triggers
+  if echo "$file" | grep -qE "^tests/api/"; then
+    run_api=true
+  fi
+done
+# Run lint-staged first to catch formatting and linting errors
+echo "Husky: Running lint-staged..."
+if ! npx lint-staged; then
+  echo "Husky: lint-staged failed. Commit aborted."
+  exit 1
+fi
+
+if [ "$run_ui" = "true" ]; then
+  echo "Husky: Staged changes affect UI tests. Running npm run test:ui..."
+  if ! npm run test:ui; then
+    echo "Husky: UI tests failed. Commit aborted."
+    exit 1
+  fi
+fi
+
+if [ "$run_api" = "true" ]; then
+  echo "Husky: Staged changes affect API tests. Running npm run test:api..."
+  if ! npm run test:api; then
+    echo "Husky: API tests failed. Commit aborted."
+    exit 1
+  fi
+fi
