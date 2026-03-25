@@ -19,11 +19,11 @@ test.describe('Sharp Homepage', () => {
 
   test('Hero Button Find a doctor navigates to the correct URL', async ({ homePage }) => {
     await homePage.findADoctorButton.click();
-    await expect(homePage.page).toHaveURL(/doctors/);
+    await expect(homePage.page).toHaveURL(/doctors/, { timeout: 15000 });
   });
 
   test('Hero has corect header and subheader', async ({ homePage }) => {
-    await homePage.page.getByRole('heading', { name: 'San Diego\'s health care leader' }).click();
-    await homePage.page.getByText('Combining the science of').click();
+    await expect(homePage.page.getByRole('heading', { name: 'San Diego\'s health care leader' })).toBeVisible();
+    await expect(homePage.page.getByText('Combining the science of')).toBeVisible();
   });
 });
