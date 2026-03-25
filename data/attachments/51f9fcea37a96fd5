@@ -1,0 +1,76 @@
+# Test info
+
+- Name: Zero Config table >> The youngest user with the age of 20
+- Location: /home/runner/work/playwright-ts-migrated/playwright-ts-migrated/tests/ui/zeroConfig.spec.ts:29:3
+
+# Error details
+
+```
+Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2158/pw_run.sh
+╔═════════════════════════════════════════════════════════════════════════╗
+║ Looks like Playwright Test or Playwright was just installed or updated. ║
+║ Please run the following command to download new browsers:              ║
+║                                                                         ║
+║     npx playwright install                                              ║
+║                                                                         ║
+║ <3 Playwright Team                                                      ║
+╚═════════════════════════════════════════════════════════════════════════╝
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '../../util/fixtures';
+   2 | import { ZERO_CONFIG_TABLE } from '../../data/zeroConfigTable.data';
+   3 |
+   4 | test.describe('Zero Config table', () => {
+   5 |   test.beforeEach(async ({ zeroConfigPage }) => {
+   6 |     await zeroConfigPage.goto('https://datatables.net/examples/index');
+   7 |     await zeroConfigPage.zeroConfigTable.click();
+   8 |     await expect(zeroConfigPage.page).toHaveTitle(ZERO_CONFIG_TABLE.TITLE);
+   9 |     await zeroConfigPage.table.root.waitFor({ state: 'visible' });
+  10 |   });
+  11 |
+  12 |   test('number of entries >25', async ({ zeroConfigPage }) => {
+  13 |     const textContent = await zeroConfigPage.pageStatus.textContent();
+  14 |     const numbers = textContent?.match(/\d+/g);
+  15 |     expect(Number(numbers?.[2])).toBeGreaterThan(ZERO_CONFIG_TABLE.MIN_ENTRIES);
+  16 |   });
+  17 |
+  18 |   test('verifies table headers', async ({ zeroConfigPage }) => {
+  19 |     await expect(zeroConfigPage.table.headers).toHaveText(Object.values(ZERO_CONFIG_TABLE.TABLE.HEADERS));
+  20 |   });
+  21 |
+  22 |   test('The oldest user with the age of 66', async ({ zeroConfigPage }) => {
+  23 |     await zeroConfigPage.sortColumnBy('Age', 'desc');
+  24 |     const firstTableRow = zeroConfigPage.table.rows.first();
+  25 |     const oldestAge = await zeroConfigPage.getCellText(firstTableRow, ZERO_CONFIG_TABLE.TABLE.HEADERS.AGE);
+  26 |     expect(Number(oldestAge)).toBe(ZERO_CONFIG_TABLE.TABLE.OLDEST_AGE);
+  27 |   });
+  28 |
+> 29 |   test('The youngest user with the age of 20', async ({ zeroConfigPage }) => {
+     |   ^ Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2158/pw_run.sh
+  30 |     await zeroConfigPage.sortColumnBy('Age', 'asc');
+  31 |     const firstTableRow = zeroConfigPage.table.rows.first();
+  32 |     const youngestAge = await zeroConfigPage.getCellText(firstTableRow, ZERO_CONFIG_TABLE.TABLE.HEADERS.AGE);
+  33 |     expect(Number(youngestAge)).toBe(ZERO_CONFIG_TABLE.TABLE.YOUNGEST_AGE);
+  34 |   });
+  35 |
+  36 |   test('Can find entry by value from "Name" column', async ({ zeroConfigPage }) => {
+  37 |     const row = await zeroConfigPage.findEntryByValue('Name', 'Airi Satou');
+  38 |     await expect(row).toBeVisible();
+  39 |   });
+  40 |
+  41 |   test('main login button is visible', async ({ zeroConfigPage }) => {
+  42 |     await expect(zeroConfigPage.login.loginButton).toBeVisible();
+  43 |     await expect(zeroConfigPage.login.loginButton).toHaveText('Login / Register');
+  44 |   });
+  45 |
+  46 |   test.skip('should allow an existing user to log in', async ({ zeroConfigPage }) => {
+  47 |     await zeroConfigPage.login.loginButton.click();
+  48 |     await zeroConfigPage.login.login('user@example.com', 'password123');
+  49 |     await expect(zeroConfigPage.login.usernameInput).toBeHidden();
+  50 |   });
+  51 | });
+  52 |
+```

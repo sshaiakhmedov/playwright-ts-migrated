@@ -1,0 +1,69 @@
+# Test info
+
+- Name: Demoblaze API Mocking >> Mock the /entries API to display a custom Playwright Product
+- Location: /home/runner/work/playwright-ts-migrated/playwright-ts-migrated/tests/ui/demoblazeMocking.spec.ts:4:3
+
+# Error details
+
+```
+Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2158/pw_run.sh
+╔═════════════════════════════════════════════════════════════════════════╗
+║ Looks like Playwright Test or Playwright was just installed or updated. ║
+║ Please run the following command to download new browsers:              ║
+║                                                                         ║
+║     npx playwright install                                              ║
+║                                                                         ║
+║ <3 Playwright Team                                                      ║
+╚═════════════════════════════════════════════════════════════════════════╝
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '../../util/fixtures';
+   2 |
+   3 | test.describe('Demoblaze API Mocking', () => {
+>  4 |   test('Mock the /entries API to display a custom Playwright Product', async ({ demoblazeHomePage, page }) => {
+     |   ^ Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2158/pw_run.sh
+   5 |     // 1. Define the custom JSON payload we want to inject into the frontend
+   6 |     const MOCK_DATA = {
+   7 |       Items: [
+   8 |         {
+   9 |           cat: 'notebook',
+  10 |           desc: 'This is a custom laptop injected via Playwright Network Mocking. It is the fastest laptop in the world.',
+  11 |           id: 999,
+  12 |           img: 'imgs/macbook_air.jpg',
+  13 |           price: 9999,
+  14 |           title: 'Playwright Pro M4 Max',
+  15 |         },
+  16 |       ],
+  17 |       LastEvaluatedKey: { id: '9' },
+  18 |     };
+  19 |
+  20 |     // 2. Intercept the network request BEFORE navigating
+  21 |     // The asterisk (*) functions as a wild card to match any query parameters
+  22 |     await page.route('**/entries*', async (route) => {
+  23 |       // Fulfill the route with our custom JSON response instead of letting it reach the real database
+  24 |       await route.fulfill({
+  25 |         status: 200,
+  26 |         contentType: 'application/json',
+  27 |         body: JSON.stringify(MOCK_DATA),
+  28 |       });
+  29 |     });
+  30 |
+  31 |     // 3. Navigate to the homepage (the frontend will now ask for /entries and get our mock)
+  32 |     await demoblazeHomePage.goto();
+  33 |
+  34 |     // 4. Assert that the frontend UI rendered our fake mocked product
+  35 |     // Wait for the custom title to be visible in the product grid
+  36 |     await expect(demoblazeHomePage.getProductTitle('Playwright Pro M4 Max')).toBeVisible();
+  37 |
+  38 |     // Assert the custom price is rendered
+  39 |     await expect(demoblazeHomePage.getProductPrice('$9999')).toBeVisible();
+  40 |
+  41 |     // Assert the custom description is rendered
+  42 |     await expect(demoblazeHomePage.getProductDescription('This is a custom laptop injected via Playwright Network Mocking.')).toBeVisible();
+  43 |   });
+  44 | });
+  45 |
+```
