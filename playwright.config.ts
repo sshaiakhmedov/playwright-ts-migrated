@@ -34,7 +34,7 @@ const config: PlaywrightTestConfig = {
     {
       timeout: 30000, // whole test (ms)
       expect: { timeout: 5000 }, // expect assertions
-      name: 'UI Tests',
+      name: 'UI Tests - Chromium',
       testDir: './tests/ui',
       dependencies: ['setup'],
       use: {
@@ -43,6 +43,20 @@ const config: PlaywrightTestConfig = {
         navigationTimeout: 15000, // page.goto, reload, etc.
         actionTimeout: 10000, // click, fill, check, etc.
         storageState: '.auth/user.json', // Automatically inject auth state
+      },
+    },
+    {
+      timeout: 30000, // whole test (ms)
+      expect: { timeout: 5000 }, // expect assertions
+      name: 'UI Tests - WebKit',
+      testDir: './tests/ui',
+      dependencies: ['setup'],
+      use: {
+        browserName: 'webkit', // Safari support
+        baseURL: 'https://www.demoblaze.com',
+        navigationTimeout: 15000,
+        actionTimeout: 10000,
+        storageState: '.auth/user.json',
       },
     },
     {
