@@ -1,19 +1,11 @@
 #!/bin/bash
 
-# Check if the --skip-build flag is passed
-SKIP_BUILD=false
-if [[ "$1" == "--skip-build" ]]; then
-  SKIP_BUILD=true
-fi
+# Simple script to build and run the Playwright tests in Docker
 
-# Step 1: Build the Docker image (if not skipping)
-if [ "$SKIP_BUILD" = false ]; then
-  echo "Building the Docker image..."
-  docker build --platform linux/amd64 -t pw-tests .
-else
-  echo "Skipping Docker image build..."
-fi
+# Step 1: Build the Docker image
+echo "Building the Playwright Docker image..."
+docker build -t pw-tests .
 
-# Step 2: Run the container and execute tests
-echo "Running Playwright tests in Docker container..."
-docker run --platform linux/amd64 --rm pw-tests
+# Step 2: Run the tests in the container
+echo "Running tests in the Docker container..."
+docker run --rm pw-tests

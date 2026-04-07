@@ -8,6 +8,9 @@ const config: PlaywrightTestConfig = {
   // Limit the number of workers on CI, use default locally
   workers: process.env.CI ? 5 : 1,
 
+  // Directory for test artifacts (traces, screenshots, etc.)
+  outputDir: 'test-results',
+
   // Use multiple reporters
   reporter: [
     ['list'], // Shows test statistics in the terminal
