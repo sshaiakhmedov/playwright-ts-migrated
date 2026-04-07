@@ -69,6 +69,7 @@ pages:
     - job: test:ui
     - job: test:api
   before_script:
+    - apt-get update && apt-get install -y default-jre
     - npm install -g allure-commandline
   script:
     # Collect all allure-results from previous jobs
