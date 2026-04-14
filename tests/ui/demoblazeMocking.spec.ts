@@ -29,7 +29,7 @@ test.describe('Demoblaze API Mocking', () => {
     });
 
     // 3. Navigate to the homepage (the frontend will now ask for /entries and get our mock)
-    await demoblazeHomePage.goto();
+    await demoblazeHomePage.open();
 
     // 4. Assert that the frontend UI rendered our fake mocked product
     // Wait for the custom title to be visible in the product grid

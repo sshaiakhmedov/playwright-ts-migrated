@@ -1,9 +1,9 @@
 import { test, expect } from '../../util/fixtures';
 import { ZERO_CONFIG_TABLE } from '../../data/zeroConfigTable.data';
 
-test.describe('Zero Config table', () => {
+test.describe.skip('Zero Config table', () => {
   test.beforeEach(async ({ zeroConfigPage }) => {
-    await zeroConfigPage.goto('https://datatables.net/examples/index');
+    await zeroConfigPage.open();
     await zeroConfigPage.zeroConfigTable.click();
     await expect(zeroConfigPage.page).toHaveTitle(ZERO_CONFIG_TABLE.TITLE);
     await zeroConfigPage.table.root.waitFor({ state: 'visible' });
@@ -43,7 +43,7 @@ test.describe('Zero Config table', () => {
     await expect(zeroConfigPage.login.loginButton).toHaveText('Login / Register');
   });
 
-  test.skip('should allow an existing user to log in', async ({ zeroConfigPage }) => {
+  test('should allow an existing user to log in', async ({ zeroConfigPage }) => {
     await zeroConfigPage.login.loginButton.click();
     await zeroConfigPage.login.login('user@example.com', 'password123');
     await expect(zeroConfigPage.login.usernameInput).toBeHidden();

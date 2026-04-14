@@ -8,6 +8,8 @@ interface TableLocators {
 }
 
 export class FeatureEnableDisable extends Base {
+  protected readonly path = 'https://datatables.net/examples/basic_init/filter_only.html';
+
   constructor(page: Page) {
     super(page);
   }

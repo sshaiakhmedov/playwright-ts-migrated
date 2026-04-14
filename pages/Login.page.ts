@@ -2,6 +2,8 @@ import { Base } from './Base.page';
 import type { Page } from '@playwright/test';
 
 export class Login extends Base {
+  protected readonly path = '/';
+
   constructor(page: Page) {
     super(page);
   }
@@ -31,25 +33,27 @@ export class Login extends Base {
   }
 
   // Class Web Elements
-  async goToHomePage(): Promise<void> {
-    await this.page.goto('/', { waitUntil: 'domcontentloaded' });
-  }
 
   async loginByEmail(email: string, password: string): Promise<void> {
     await this.signingModalContent.emailInput.fill(email);
     await this.signingModalContent.passwordInput.fill(password);
+    await this.page.waitForTimeout(2000);
+
     await this.signingModalContent.enterWebsiteButton.click();
+    await this.page.waitForTimeout(2000);
   }
 
   async loginByPhone(number: string, password: string): Promise<void> {
     await this.signingModalContent.loginByPhone.click();
-    await this.page.waitForTimeout(3000);
+    // Wait for the tab animation/transition to finish
+    // await this.signingModalContent.phoneInput.waitFor({ state: 'visible' });
     await this.signingModalContent.phoneInput.fill(number);
-    await this.page.waitForTimeout(3000);
-
     await this.signingModalContent.passwordInput.fill(password);
-    await this.page.waitForTimeout(3000);
+    await this.page.waitForTimeout(2000);
+
+    await this.page.waitForTimeout(2000);
 
     await this.signingModalContent.enterWebsiteButton.click();
+    await this.page.waitForTimeout(2000);
   }
 }

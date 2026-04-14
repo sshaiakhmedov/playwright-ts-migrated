@@ -5,16 +5,11 @@ import { DemoblazeLoginComponent } from '../components/DemoblazeLogin.component'
 export class DemoblazeHome extends Base {
   readonly loginModal: DemoblazeLoginComponent;
 
+  protected readonly path = 'https://demoblaze.com/';
+
   constructor(page: Page) {
     super(page);
     this.loginModal = new DemoblazeLoginComponent(this.page);
-  }
-
-  /**
-   * Navigate to the Demoblaze home page.
-   */
-  async goto(): Promise<void> {
-    await this.page.goto('https://demoblaze.com/');
   }
 
   get welcomeMessage(): Locator {

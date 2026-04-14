@@ -11,6 +11,8 @@ interface TableLocators {
 export class ZeroConfig extends Base {
   readonly login: LoginComponent;
 
+  protected readonly path = 'https://datatables.net/examples/index';
+
   constructor(page: Page) {
     super(page);
     this.login = new LoginComponent(this.page);

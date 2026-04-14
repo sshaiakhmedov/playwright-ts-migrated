@@ -10,7 +10,7 @@ test.describe('Demoblaze Login Tests', () => {
 
   test('Happy Path: User can log in with valid credentials', async ({ demoblazeHomePage }) => {
     await test.step('Navigate to homepage', async () => {
-      await demoblazeHomePage.goto();
+      await demoblazeHomePage.open();
     });
 
     await test.step('Open login modal', async () => {
@@ -33,7 +33,7 @@ test.describe('Demoblaze Login Tests', () => {
   for (const scenario of negativeScenarios) {
     test(`Negative Path: User cannot log in with ${scenario.description}`, async ({ demoblazeHomePage, page }) => {
       // Navigate to homepage
-      await demoblazeHomePage.goto();
+      await demoblazeHomePage.open();
 
       // Set up dialog handler before triggering action
       let dialogMessage = '';

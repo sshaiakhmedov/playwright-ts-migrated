@@ -2,7 +2,7 @@ import { test, expect } from '../../util/fixtures';
 
 test.describe('Feature enable / disable table', () => {
   test.beforeEach(async ({ featureEnableDisablePage }) => {
-    await featureEnableDisablePage.goto('https://datatables.net/examples/basic_init/filter_only.html');
+    await featureEnableDisablePage.open();
     await featureEnableDisablePage.table.root.waitFor({ state: 'visible' });
   });
 

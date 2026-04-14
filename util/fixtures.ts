@@ -1,28 +1,32 @@
 import { test as base, expect } from '@playwright/test';
 import { ApiManager } from '../api/ApiManager';
-import { Home, FindADoctor, ZeroConfig, FeatureEnableDisable, DemoblazeHome } from '../pages';
+import { ZeroConfig, FeatureEnableDisable, DemoblazeHome } from '../pages';
+import { Sputnik8 } from '../pages/Sputnik8.page';
+import { SputnikHome } from '../pages/Sputnik8Home.page';
+import { Login } from '../pages/Login.page';
 
 type MyFixtures = {
   api: ApiManager;
-  homePage: Home;
-  findADoctorPage: FindADoctor;
   zeroConfigPage: ZeroConfig;
   featureEnableDisablePage: FeatureEnableDisable;
   demoblazeHomePage: DemoblazeHome;
+  sputnik8: Sputnik8;
+  sputnikHome: SputnikHome;
+  loginPage: Login;
 };
 
-export const test = base.extend<MyFixtures>({
+const test = base.extend<MyFixtures>({
+  loginPage: async ({ page }, use) => {
+    const loginPage = new Login(page);
+    await use(loginPage);
+  },
+  sputnik8: async ({ page }, use) => {
+    const sputnikHome = new Sputnik8(page);
+    await use(sputnikHome);
+  },
   api: async ({ request }, use) => {
     const apiManager = new ApiManager(request);
     await use(apiManager);
-  },
-  homePage: async ({ page }, use) => {
-    const home = new Home(page);
-    await use(home);
-  },
-  findADoctorPage: async ({ page }, use) => {
-    const fad = new FindADoctor(page);
-    await use(fad);
   },
   zeroConfigPage: async ({ page }, use) => {
     const zeroConfig = new ZeroConfig(page);
@@ -36,6 +40,10 @@ export const test = base.extend<MyFixtures>({
     const demoblazeHome = new DemoblazeHome(page);
     await use(demoblazeHome);
   },
+  sputnikHome: async ({ page }, use) => {
+    const sputnikHome = new SputnikHome(page);
+    await use(sputnikHome);
+  },
 });
 
-export { expect };
+export { test, expect };

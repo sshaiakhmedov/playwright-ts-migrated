@@ -2,13 +2,15 @@ import type { Page } from '@playwright/test';
 import { Base } from './Base.page';
 
 export class Sputnik8 extends Base {
+  protected readonly path = '/';
+
   constructor(page: Page) {
     super(page);
   }
 
   // Constants
-  static readonly HEADER_REGEXP =
-    /(\d+) экскурсии в (\d+) городах на одном сайте. Онлайн бронирование, настоящие отзывы, расписание на каждый день./;
+  static readonly HEADER_REGEXP
+    = /(\d+) экскурсий в (\d+) городах на одном сайте. Онлайн бронирование, настоящие отзывы, расписание на каждый день./;
 
   // Web locators
 
@@ -19,6 +21,7 @@ export class Sputnik8 extends Base {
       loginButton: container.locator('[data-name="signin"]').filter({ visible: true }).first(),
     };
   }
+
   get topContainer() {
     return {
       h1Header: this.page.getByRole('heading', { name: 'Бронирование экскурсий по всему миру' }),
@@ -44,10 +47,6 @@ export class Sputnik8 extends Base {
   }
 
   // Methods
-  async goto(): Promise<void> {
-    await this.page.goto('/', { waitUntil: 'domcontentloaded' });
-  }
-
   async login(): Promise<void> {
     await this.headerContainer.loginButton.click();
   }

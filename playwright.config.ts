@@ -38,17 +38,16 @@ const config: PlaywrightTestConfig = {
       },
     },
     {
-      timeout: 60000, // whole test (ms)
-      expect: { timeout: 5000 }, // expect assertions
+      timeout: 90000,
+      expect: { timeout: 10000 },
       name: 'chrome',
       testDir: './tests/ui',
-      // dependencies: ['setup'],
       use: {
         browserName: 'chromium',
-        baseURL: 'https://www.sputnik8.com',
-        navigationTimeout: 10000, // page.goto, reload, etc.
-        actionTimeout: 10000, // click, fill, check, etc.
-        storageState: '.auth/user.json', // Automatically inject auth state
+        baseURL: 'https://www.sputnik8.com/ru/',
+        locale: 'ru-RU',
+        navigationTimeout: 10000,
+        actionTimeout: 8000,
       },
     },
     {

@@ -4,11 +4,16 @@ import type { Page, Locator } from '@playwright/test';
  * Base page class that all page objects extend from.
  * Provides common functionality for interacting with pages.
  */
-export class Base {
+export abstract class Base {
   readonly page: Page;
+  protected abstract readonly path: string;
 
   constructor(page: Page) {
     this.page = page;
+  }
+
+  async open(options?: { waitUntil?: 'load' | 'domcontentloaded' | 'networkidle' | 'commit' }): Promise<void> {
+    await this.page.goto(this.path, options);
   }
 
   async goto(url: string): Promise<void> {
@@ -121,7 +126,7 @@ export class Base {
   }
 
   async goBack(): Promise<void> {
-    await this.page.goBack();
+    await this.page.goBack({ waitUntil: 'domcontentloaded' });
   }
 
   async goForward(): Promise<void> {
