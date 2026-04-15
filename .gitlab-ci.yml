@@ -27,9 +27,9 @@ test:ui:
   script:
     - npm ci
     # Install browsers ONLY if they are not in cache
-    - npx playwright install --with-deps chromium webkit
+    - npx playwright install --with-deps chromium
     # Run shards
-    - npx playwright test tests/ui --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
+    - npm run test:all:chrome -- --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
   artifacts:
     when: always
     paths:
@@ -41,23 +41,6 @@ test:ui:
     - if: $CI_PIPELINE_SOURCE == "push"
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
-# ---------------------------------------------------------
-# Job: API Tests
-# ---------------------------------------------------------
-test:api:
-  stage: test
-  image: $PLAYWRIGHT_IMAGE
-  script:
-    - npm ci
-    # API tests don't usually need browsers, but we use the playwright image anyway
-    - npx playwright test tests/api
-  artifacts:
-    when: always
-    paths:
-      - playwright-report/
-      - test-results/
-      - allure-results/
-    expire_in: 30 days
 
 # ---------------------------------------------------------
 # Job: Generate Allure Report
@@ -67,7 +50,6 @@ pages:
   image: node:$NODE_VERSION
   needs:
     - job: test:ui
-    - job: test:api
   before_script:
     - apt-get update && apt-get install -y default-jre
     - npm install -g allure-commandline
