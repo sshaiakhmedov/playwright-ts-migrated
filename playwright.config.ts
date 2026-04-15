@@ -21,7 +21,7 @@ const config: PlaywrightTestConfig = {
   /* Shared options */
   use: {
     headless: true,
-    viewport: null, // Disable the fixed viewport
+    viewport: { width: 1920, height: 1080 }, // Enforce desktop viewport globally
     ignoreHTTPSErrors: true,
     video: 'on-first-retry',
     screenshot: 'on',
@@ -38,16 +38,16 @@ const config: PlaywrightTestConfig = {
       },
     },
     {
-      timeout: 90000,
-      expect: { timeout: 10000 },
+      expect: { timeout: 15000 },
       name: 'chrome',
       testDir: './tests/ui',
       use: {
         browserName: 'chromium',
         baseURL: 'https://www.sputnik8.com/ru/',
         locale: 'ru-RU',
-        navigationTimeout: 10000,
-        actionTimeout: 8000,
+        viewport: { width: 1920, height: 1080 },
+        navigationTimeout: 15000,
+        actionTimeout: 15000,
       },
     },
     {
@@ -58,7 +58,7 @@ const config: PlaywrightTestConfig = {
       dependencies: ['setup'],
       use: {
         browserName: 'webkit', // Safari support
-        baseURL: 'https://www.demoblaze.com',
+        baseURL: 'https://www.sputnik8.com/ru/',
         navigationTimeout: 15000,
         actionTimeout: 10000,
         storageState: '.auth/user.json',

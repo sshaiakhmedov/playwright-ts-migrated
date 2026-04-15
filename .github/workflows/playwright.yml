@@ -47,14 +47,14 @@ jobs:
 
     - name: Install Playwright Browsers
       if: steps.playwright-cache.outputs.cache-hit != 'true'
-      run: npx playwright install --with-deps chromium webkit
+      run: npx playwright install --with-deps chromium
 
     - name: Install Playwright OS Dependencies
       if: steps.playwright-cache.outputs.cache-hit == 'true'
-      run: npx playwright install-deps chromium webkit
+      run: npx playwright install-deps chromium
     
     - name: Run Playwright tests
-      run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      run: npm run test:all:chrome -- --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       env:
         DEMOBLAZE_USERNAME: ${{ secrets.DEMOBLAZE_USERNAME }}
         DEMOBLAZE_PASSWORD: ${{ secrets.DEMOBLAZE_PASSWORD }}

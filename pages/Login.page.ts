@@ -19,7 +19,7 @@ export class Login extends Base {
       emailInput: container.getByPlaceholder('example@email.ru'),
       passwordInput: container.locator('#user_signin_password'),
       loginByPhone: container.locator('label', { hasText: 'Вход по номеру телефона' }),
-      phoneInput: container.locator('[for="phone"] #user_phone'),
+      phoneInput: container.locator('#user_phone'),
       enterWebsiteButton: container.locator('input[type="submit"][value="Вход на сайт"]'),
     };
   }
@@ -35,25 +35,24 @@ export class Login extends Base {
   // Class Web Elements
 
   async loginByEmail(email: string, password: string): Promise<void> {
+    await this.signingModalContent.loginByEmai.waitFor({ state: 'visible' });
+    await this.signingModalContent.enterWebsiteButton.waitFor({ state: 'visible' });
+    await this.signingModalContent.emailInput.waitFor({ state: 'visible' });
     await this.signingModalContent.emailInput.fill(email);
     await this.signingModalContent.passwordInput.fill(password);
-    await this.page.waitForTimeout(2000);
-
     await this.signingModalContent.enterWebsiteButton.click();
-    await this.page.waitForTimeout(2000);
   }
 
   async loginByPhone(number: string, password: string): Promise<void> {
-    await this.signingModalContent.loginByPhone.click();
-    // Wait for the tab animation/transition to finish
-    // await this.signingModalContent.phoneInput.waitFor({ state: 'visible' });
-    await this.signingModalContent.phoneInput.fill(number);
-    await this.signingModalContent.passwordInput.fill(password);
-    await this.page.waitForTimeout(2000);
+    const phoneLabel = this.signingModalContent.loginByPhone;
+    const phoneInput = this.signingModalContent.phoneInput;
+    const passwordInput = this.signingModalContent.passwordInput;
+    const submitButton = this.signingModalContent.enterWebsiteButton;
 
-    await this.page.waitForTimeout(2000);
-
-    await this.signingModalContent.enterWebsiteButton.click();
-    await this.page.waitForTimeout(2000);
+    await this.page.evaluate(el => el.click(), await phoneLabel.elementHandle());
+    await phoneInput.waitFor({ state: 'visible' });
+    await phoneInput.fill(number, { force: true });
+    await passwordInput.fill(password, { force: true });
+    await this.page.evaluate(el => el.click(), await submitButton.elementHandle());
   }
 }

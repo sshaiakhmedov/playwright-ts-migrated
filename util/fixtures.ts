@@ -1,6 +1,6 @@
 import { test as base, expect } from '@playwright/test';
 import { ApiManager } from '../api/ApiManager';
-import { ZeroConfig, FeatureEnableDisable, DemoblazeHome } from '../pages';
+import { ZeroConfig, DemoblazeHome } from '../pages';
 import { Sputnik8 } from '../pages/Sputnik8.page';
 import { SputnikHome } from '../pages/Sputnik8Home.page';
 import { Login } from '../pages/Login.page';
@@ -8,7 +8,6 @@ import { Login } from '../pages/Login.page';
 type MyFixtures = {
   api: ApiManager;
   zeroConfigPage: ZeroConfig;
-  featureEnableDisablePage: FeatureEnableDisable;
   demoblazeHomePage: DemoblazeHome;
   sputnik8: Sputnik8;
   sputnikHome: SputnikHome;
@@ -31,10 +30,6 @@ const test = base.extend<MyFixtures>({
   zeroConfigPage: async ({ page }, use) => {
     const zeroConfig = new ZeroConfig(page);
     await use(zeroConfig);
-  },
-  featureEnableDisablePage: async ({ page }, use) => {
-    const featureEnableDisable = new FeatureEnableDisable(page);
-    await use(featureEnableDisable);
   },
   demoblazeHomePage: async ({ page }, use) => {
     const demoblazeHome = new DemoblazeHome(page);

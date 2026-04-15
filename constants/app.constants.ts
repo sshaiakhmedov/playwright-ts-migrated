@@ -4,10 +4,6 @@ export const TIMEOUTS = {
   LONG: 30000,
 } as const;
 
-export const LABELS = {
-  FIND_A_DOCTOR: 'Find a doctor',
-} as const;
+export const LABELS = {} as const;
 
-export const URLS = {
-  DOCTORS_PAGE: '/doctors',
-} as const;
+export const URLS = {} as const;

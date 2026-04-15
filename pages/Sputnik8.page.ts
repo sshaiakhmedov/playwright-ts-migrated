@@ -10,7 +10,7 @@ export class Sputnik8 extends Base {
 
   // Constants
   static readonly HEADER_REGEXP
-    = /(\d+) экскурсий в (\d+) городах на одном сайте. Онлайн бронирование, настоящие отзывы, расписание на каждый день./;
+    = /(\d+) экскурси[яйи] в (\d+) городах на одном сайте. Онлайн бронирование, настоящие отзывы, расписание на каждый день./;
 
   // Web locators
 
@@ -18,7 +18,7 @@ export class Sputnik8 extends Base {
     const container = this.page.locator('div.layout-header');
     return {
       container,
-      loginButton: container.locator('[data-name="signin"]').filter({ visible: true }).first(),
+      loginButton: container.locator('[data-name="signin"]').first(),
     };
   }
 
@@ -38,7 +38,7 @@ export class Sputnik8 extends Base {
     };
   }
 
-  get footer() {
+  get secondaryFooter() {
     const component = this.page.locator('.layout-footer.mobileapp-hide');
     return {
       component,
@@ -46,8 +46,9 @@ export class Sputnik8 extends Base {
     };
   }
 
-  // Methods
   async login(): Promise<void> {
+    await this.headerContainer.container.waitFor({ state: 'visible' });
+    await this.headerContainer.loginButton.waitFor({ state: 'visible' });
     await this.headerContainer.loginButton.click();
   }
 }

@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 # Husky pre-commit hook
+export PATH="/Users/sshaiakhmedov/.nvm/versions/node/v20.20.1/bin:$PATH"
 
 staged_files=$(git diff --cached --name-only)
 run_ui=false
@@ -23,18 +24,10 @@ if ! npx lint-staged; then
   exit 1
 fi
 
-if [ "$run_ui" = "true" ]; then
-  echo "Husky: Staged changes affect UI tests. Running npm run test:ui..."
-  if ! npm run test:ui; then
-    echo "Husky: UI tests failed. Commit aborted."
-    exit 1
-  fi
-fi
-
-if [ "$run_api" = "true" ]; then
-  echo "Husky: Staged changes affect API tests. Running npm run test:api..."
-  if ! npm run test:api; then
-    echo "Husky: API tests failed. Commit aborted."
+if [ "$run_ui" = "true" ] || [ "$run_api" = "true" ]; then
+  echo "Husky: Staged changes affect tests. Running npm run test:all:chrome..."
+  if ! npm run test:all:chrome; then
+    echo "Husky: Tests failed. Commit aborted."
     exit 1
   fi
 fi

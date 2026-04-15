@@ -1,4 +1,5 @@
-import type { Page, Locator } from '@playwright/test';
+import type { Page, Locator, Browser } from '@playwright/test';
+import { FooterLinks } from '../components/Footer.component';
 
 /**
  * Base page class that all page objects extend from.
@@ -6,10 +7,32 @@ import type { Page, Locator } from '@playwright/test';
  */
 export abstract class Base {
   readonly page: Page;
+  readonly footer: FooterLinks;
   protected abstract readonly path: string;
 
   constructor(page: Page) {
     this.page = page;
+    this.footer = new FooterLinks(page);
+  }
+
+  /**
+   * Helper to execute a sequence of actions on a brand new page and ensure it closes automatically.
+   * Extremely useful for `beforeAll` hooks where test-fixtures are unavailable.
+   */
+  static async executeOnce<T extends Base>(
+    browser: Browser,
+    PageClass: new (page: Page) => T,
+    action: (po: T) => Promise<void>,
+    options?: { waitUntil?: 'load' | 'domcontentloaded' | 'networkidle' | 'commit' },
+  ) {
+    const page = await browser.newPage();
+    const po = new PageClass(page);
+    await po.open(options || { waitUntil: 'domcontentloaded' });
+    try {
+      await action(po);
+    } finally {
+      await page.close();
+    }
   }
 
   async open(options?: { waitUntil?: 'load' | 'domcontentloaded' | 'networkidle' | 'commit' }): Promise<void> {

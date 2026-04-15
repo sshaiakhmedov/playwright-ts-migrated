@@ -27,6 +27,6 @@ test.describe('Main Landing Page Elements', () => {
   });
 
   test('"Города" статистика верна и открывает новыую страницу в тойже вкладке', async ({ sputnik8 }) => {
-    await sputnik8.scrollIntoView(sputnik8.footer.goroda);
+    await sputnik8.scrollIntoView(sputnik8.secondaryFooter.goroda);
   });
 });

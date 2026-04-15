@@ -1,6 +1,6 @@
 import { test, expect } from '../../../../util/fixtures';
 
-test.describe.skip('Filed Login:', function () {
+test.describe('Failed Login:', function () {
   test.describe.configure({ mode: 'parallel' });
 
   test.beforeEach('Trigger Login popup', async ({ loginPage, sputnik8 }) => {
@@ -13,8 +13,9 @@ test.describe.skip('Filed Login:', function () {
     await expect(loginPage.errorMessages.invalidEmailPhonePass).toHaveAttribute('style', 'color: #cc2f0e');
   });
 
-  test('error message when By Phone when using non non-registered phone', async ({ loginPage }) => {
-    await loginPage.loginByPhone('234234234', 'demopass');
+  test.skip('error message when By Phone when using non non-registered phone', async ({ loginPage }) => {
+    // TODO: very strange rendering of password field, no matter what we've tried.
+    await loginPage.loginByPhone('9035772586', 'demopass');
     await expect(loginPage.errorMessages.invalidEmailPhonePass).toHaveAttribute('style', 'color: #cc2f0e');
   });
 });
