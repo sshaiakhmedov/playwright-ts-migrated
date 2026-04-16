@@ -18,18 +18,17 @@ cache:
     - ~/.cache/ms-playwright/
 
 # ---------------------------------------------------------
-# Job: UI Tests (Sharded 4 ways)
+# Job: UI Tests
 # ---------------------------------------------------------
 test:ui:
   stage: test
   image: $PLAYWRIGHT_IMAGE
-  parallel: 4
   script:
     - npm ci
     # Install browsers ONLY if they are not in cache
     - npx playwright install --with-deps chromium
-    # Run shards
-    - npm run test:all:chrome -- --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
+    # Run tests
+    - npm run test:all:chrome
   artifacts:
     when: always
     paths:
