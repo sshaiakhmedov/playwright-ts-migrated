@@ -29,6 +29,8 @@ const config: PlaywrightTestConfig = {
       args: ['--start-maximized'], // Tell Chrome to start maximized
     },
   },
+  retries: process.env.CI ? 2 : 0,
+
   projects: [
     {
       name: 'setup',

@@ -3,6 +3,7 @@ import { ApiManager } from '../api/ApiManager';
 import { ZeroConfig, DemoblazeHome } from '../pages';
 import { Sputnik8 } from '../pages/Sputnik8.page';
 import { SputnikHome } from '../pages/Sputnik8Home.page';
+import { applyPerformanceMocks } from './mockHelpers';
 
 type MyFixtures = {
   api: ApiManager;
@@ -13,6 +14,11 @@ type MyFixtures = {
 };
 
 const test = base.extend<MyFixtures>({
+  page: async ({ page }, use) => {
+    // Globally intercept tracking analytics and heavy media across the entire test suite
+    await applyPerformanceMocks(page);
+    await use(page);
+  },
   sputnik8: async ({ page }, use) => {
     const sputnikHome = new Sputnik8(page);
     await use(sputnikHome);
