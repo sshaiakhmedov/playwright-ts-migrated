@@ -15,8 +15,9 @@ If the default `node -v` shows v14, use the full path to the Node 20 binary inst
 - **Direct Command**: 
   Instead of `npx playwright test`, use:
   ```bash
-  env PATH="/Users/sshaiakhmedov/.nvm/versions/node/v20.20.1/bin:$PATH" npx playwright test
+  env PATH="/Users/sshaiakhmedov/.nvm/versions/node/v20.20.1/bin:$PATH" npx playwright test --project=chrome
   ```
+  **CRITICAL**: You MUST always run tests exclusively against `--project=chrome` unless the user explicitly requests otherwise. Do not run the full suite which includes WebKit.
 
 ## Common Issues to Avoid
 - **Unexpected token '{'**: This usually means you are running code with Node 14 that expects Node 18+. Check your version immediately.

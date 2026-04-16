@@ -65,7 +65,7 @@ export class FooterLinks {
   }
 
   get gorodaLink() {
-    return this.root.getByRole('link', { name: this.FOOTER_LINKS.CITIES, exact: false });
+    return this.root.getByRole('link', { name: 'Города', exact: false });
   }
 
   // Methods

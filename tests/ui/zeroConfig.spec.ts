@@ -37,15 +37,4 @@ test.describe.skip('Zero Config table', () => {
     const row = await zeroConfigPage.findEntryByValue('Name', 'Airi Satou');
     await expect(row).toBeVisible();
   });
-
-  test('main login button is visible', async ({ zeroConfigPage }) => {
-    await expect(zeroConfigPage.login.loginButton).toBeVisible();
-    await expect(zeroConfigPage.login.loginButton).toHaveText('Login / Register');
-  });
-
-  test('should allow an existing user to log in', async ({ zeroConfigPage }) => {
-    await zeroConfigPage.login.loginButton.click();
-    await zeroConfigPage.login.login('user@example.com', 'password123');
-    await expect(zeroConfigPage.login.usernameInput).toBeHidden();
-  });
 });

@@ -3,7 +3,6 @@ import { ApiManager } from '../api/ApiManager';
 import { ZeroConfig, DemoblazeHome } from '../pages';
 import { Sputnik8 } from '../pages/Sputnik8.page';
 import { SputnikHome } from '../pages/Sputnik8Home.page';
-import { Login } from '../pages/Login.page';
 
 type MyFixtures = {
   api: ApiManager;
@@ -11,14 +10,9 @@ type MyFixtures = {
   demoblazeHomePage: DemoblazeHome;
   sputnik8: Sputnik8;
   sputnikHome: SputnikHome;
-  loginPage: Login;
 };
 
 const test = base.extend<MyFixtures>({
-  loginPage: async ({ page }, use) => {
-    const loginPage = new Login(page);
-    await use(loginPage);
-  },
   sputnik8: async ({ page }, use) => {
     const sputnikHome = new Sputnik8(page);
     await use(sputnikHome);

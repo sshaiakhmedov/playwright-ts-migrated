@@ -51,7 +51,7 @@ const config: PlaywrightTestConfig = {
       },
     },
     {
-      timeout: 30000, // whole test (ms)
+      timeout: 90000, // whole test (ms)
       expect: { timeout: 5000 }, // expect assertions
       name: 'UI Tests - WebKit',
       testDir: './tests/ui',

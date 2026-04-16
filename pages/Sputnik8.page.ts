@@ -1,11 +1,14 @@
 import type { Page } from '@playwright/test';
 import { Base } from './Base.page';
+import { LoginComponent } from '../components/Login.component';
 
 export class Sputnik8 extends Base {
   protected readonly path = '/';
+  readonly loginComponent: LoginComponent;
 
   constructor(page: Page) {
     super(page);
+    this.loginComponent = new LoginComponent(this.page);
   }
 
   // Constants
