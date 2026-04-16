@@ -6,7 +6,9 @@ import type { Page } from '@playwright/test';
  * to radically speed up non-E2E integration test suites.
  */
 export async function applyPerformanceMocks(page: Page) {
-  // Block Third-Party Analytics
+  // Block Third-Party Analytics using native aborts.
+  // We use 'blockedbyclient' so the site thinks an adblocker intercepted it,
+  // bypassing any internal JS retry-loops that a fake 200 OK would cause.
   const blockedDomains = [
     '**/*google-analytics.com*',
     '**/*analytics.google.com*',
@@ -19,25 +21,14 @@ export async function applyPerformanceMocks(page: Page) {
 
   for (const domain of blockedDomains) {
     await page.route(domain, async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/javascript',
-        body: '',
-      });
+      await route.abort('blockedbyclient');
     });
   }
 
-  // Block Heavy Media (Images)
+  // Abort Heavy Media (Images) instead of injecting fake buffers.
+  // Injecting base64 buffers for 100 images across the Node-to-Browser IPC bounds
+  // causes severe CPU choking on weak 1-core GitLab CI Runners.
   await page.route('**/*.{png,jpg,jpeg,webp,gif}', async (route) => {
-    const transparentPixelHex = Buffer.from(
-      'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
-      'base64',
-    );
-
-    await route.fulfill({
-      status: 200,
-      contentType: 'image/gif',
-      body: transparentPixelHex,
-    });
+    await route.abort('blockedbyclient');
   });
 }

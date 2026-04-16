@@ -14,11 +14,13 @@ type MyFixtures = {
 };
 
 const test = base.extend<MyFixtures>({
+  // Globally intercept tracking analytics and heavy media across the entire test suite
+
   page: async ({ page }, use) => {
-    // Globally intercept tracking analytics and heavy media across the entire test suite
     await applyPerformanceMocks(page);
     await use(page);
   },
+  // PO fixtures
   sputnik8: async ({ page }, use) => {
     const sputnikHome = new Sputnik8(page);
     await use(sputnikHome);
