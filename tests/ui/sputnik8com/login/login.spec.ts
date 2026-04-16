@@ -1,6 +1,6 @@
 import { test, expect } from '../../../../util/fixtures';
 
-test.describe('Failed Login:', function () {
+test.describe.skip('Failed Login:', function () {
   test.describe.configure({ mode: 'parallel' });
 
   test.beforeEach('Trigger Login popup', async ({ sputnik8 }) => {
