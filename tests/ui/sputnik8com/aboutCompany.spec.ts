@@ -1,0 +1,56 @@
+import { test, expect } from '../../../util/fixtures';
+import { AboutCompany } from '../../../pages/AboutCompany.page';
+
+test.describe('About Company Page', () => {
+  test.describe('Footer Navigation', () => {
+    test.beforeEach('Navigate to home', async ({ sputnikHome }) => {
+      await sputnikHome.open({ waitUntil: 'domcontentloaded' });
+    });
+
+    test('Verify "О компании" link in the footer routes to the About page', async ({ sputnikHome }) => {
+      await sputnikHome.footer.clickAboutLink();
+      await expect(sputnikHome.page).toHaveURL(AboutCompany.URLS.ABOUT_PAGE);
+    });
+  });
+
+  test.describe('Promo Links Interaction', () => {
+    // Following SKILL.md Rule #4: Use Deep Links! Do not waste time clicking through the UI just to reach the feature.
+    test.beforeEach('Deep link directly to About page', async ({ aboutCompanyPage }) => {
+      await aboutCompanyPage.open({ waitUntil: 'domcontentloaded' });
+    });
+
+    test('Verify promotional links successfully execute destination routing', async ({ aboutCompanyPage }) => {
+      const { addExcursion, allExcursions, vacancies, yandexDzen } = aboutCompanyPage.promoLinks;
+      const URLS = AboutCompany.URLS;
+
+      // "Добавить экскурсию" -> /ru/host-tour
+      await test.step('Validate "Add Excursion" routing', async () => {
+        await addExcursion.click();
+        expect(aboutCompanyPage.getURL()).toContain(URLS.ADD_EXCURSION);
+        await aboutCompanyPage.goBack();
+      });
+
+      // "Все экскурсии" -> Root
+      await test.step('Validate "All Excursions" routing', async () => {
+        await allExcursions.click();
+        expect(aboutCompanyPage.getURL()).toContain(URLS.ALL_EXCURSIONS);
+        await aboutCompanyPage.goBack();
+      });
+
+      // "Открытые вакансии" -> /ru/jobs
+      await test.step('Validate "Vacancies" routing', async () => {
+        await vacancies.click();
+        expect(aboutCompanyPage.getURL()).toContain(URLS.VACANCIES);
+        await aboutCompanyPage.goBack();
+      });
+
+      // "Наш канал в Яндекс.Дзен" -> new tab popup
+      // TODO: skipping since started to hit captcha page
+      await test.step.skip('Validate native "Yandex Dzen" social popup flow', async () => {
+        const [newPage] = await Promise.all([aboutCompanyPage.page.context().waitForEvent('page'), yandexDzen.click()]);
+        await expect(newPage).toHaveURL(URLS.YANDEX_DZEN);
+        await newPage.close();
+      });
+    });
+  });
+});
