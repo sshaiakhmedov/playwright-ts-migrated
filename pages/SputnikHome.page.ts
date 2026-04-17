@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { Base } from './Base.page';
 import { LoginComponent } from '../components/Login.component';
 
@@ -66,6 +66,13 @@ export class SputnikHome extends Base {
   }
 
   // Methods
+  async pageIsLoaded(): Promise<void> {
+    await expect(this.headerContainer.container).toBeVisible();
+    await expect(this.topContainer.h1Header).toBeVisible();
+    await expect(this.popularCity.component).toBeVisible();
+    await this.footer.componentIsLoaded();
+  }
+
   async login(): Promise<void> {
     await this.headerContainer.container.waitFor({ state: 'visible' });
     await this.headerContainer.loginButton.waitFor({ state: 'visible' });
@@ -76,8 +83,11 @@ export class SputnikHome extends Base {
     await locator.click();
   }
 
-  // Methods to form dynamic Locators
   cityByName(cityName: string): Locator {
     return this.popularCity.citiesList.filter({ hasText: cityName });
+  }
+
+  cityPill(cityName: string): Locator {
+    return this.page.locator('a.city-pills', { hasText: cityName }).first();
   }
 }

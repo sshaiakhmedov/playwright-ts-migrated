@@ -16,6 +16,12 @@ export abstract class Base {
   }
 
   /**
+   * Abstract method that every page object must implement to verify that its
+   * core components are correctly loaded and the page is ready for interaction.
+   */
+  abstract pageIsLoaded(): Promise<void>;
+
+  /**
    * Helper to execute a sequence of actions on a brand new page and ensure it closes automatically.
    * Extremely useful for `beforeAll` hooks where test-fixtures are unavailable.
    */

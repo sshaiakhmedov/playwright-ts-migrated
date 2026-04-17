@@ -1,4 +1,4 @@
-import type { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { Base } from './Base.page';
 import { DemoblazeLoginComponent } from '../components/DemoblazeLogin.component';
 
@@ -12,6 +12,7 @@ export class DemoblazeHome extends Base {
     this.loginModal = new DemoblazeLoginComponent(this.page);
   }
 
+  // Locators
   get welcomeMessage(): Locator {
     return this.page.locator('#nameofuser');
   }
@@ -27,5 +28,11 @@ export class DemoblazeHome extends Base {
 
   getProductDescription(description: string): Locator {
     return this.page.locator('#article', { hasText: description });
+  }
+
+  // Methods
+  async pageIsLoaded(): Promise<void> {
+    await expect(this.page.locator('#nava')).toBeVisible();
+    await expect(this.page.locator('#cat')).toBeVisible();
   }
 }

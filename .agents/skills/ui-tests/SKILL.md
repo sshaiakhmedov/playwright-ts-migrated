@@ -28,6 +28,7 @@ When asked to write UI tests for a feature, you MUST generate scenarios covering
 10. If a new spec implies new Page Object, Component, Fixture, Constant, Data, or Locator, create it in the appropriate folder.
 11. **Organize specs by folder:** Place the `.spec.ts` file in a project-specific subdirectory within `tests/ui/` (e.g., `tests/ui/sharp/`).
 12. **Group related elements:** In Page Objects, if elements relate to one module/block, nest all related locators inside a single getter object. This makes reading and navigation clearer (e.g., see `Home.page.ts` or `SameDayCare.page.ts` for an example implementations).
+13. **Clean Debug Code:** Remove all `console.log` statements before finalizing a test. Use `test.step()` to document progress and findings in the test report.
 
 *(Note: For generic anti-patterns like "No locators/constants in specs", refer to the global `AGENTS.md` rules.)*
 

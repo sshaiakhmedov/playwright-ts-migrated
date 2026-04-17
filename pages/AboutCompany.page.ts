@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 import { Base } from './Base.page';
 
 export class AboutCompany extends Base {
@@ -20,10 +20,20 @@ export class AboutCompany extends Base {
   // Locators
   get promoLinks() {
     return {
-      addExcursion: this.page.getByRole('link', { name: 'Добавить экскурсию' }).first(),
-      allExcursions: this.page.getByRole('link', { name: 'Все экскурсии' }).first(),
-      vacancies: this.page.getByRole('link', { name: 'Открытые вакансии' }).first(),
-      yandexDzen: this.page.getByRole('link', { name: 'Наш канал в Яндекс.Дзен' }).first(),
+      addExcursion: this.page.getByRole('link', { name: 'Добавить экскурсию', exact: true }).first(),
+      allExcursions: this.page.getByRole('link', { name: 'Все экскурсии', exact: true }).first(),
+      vacancies: this.page.getByRole('link', { name: 'Открытые вакансии', exact: true }).first(),
+      yandexDzen: this.page.getByRole('link', { name: 'Наш канал в Яндекс.Дзен', exact: true }).first(),
     };
+  }
+
+  // Methods
+  async pageIsLoaded(): Promise<void> {
+    const links = this.promoLinks;
+    await expect(links.addExcursion).toBeVisible();
+    await expect(links.allExcursions).toBeVisible();
+    await expect(links.vacancies).toBeVisible();
+    await expect(links.yandexDzen).toBeVisible();
+    await this.footer.componentIsLoaded();
   }
 }

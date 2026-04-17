@@ -36,6 +36,7 @@ When writing a new UI Spec or test, follow these exact steps:
    - **Self-Correct:** You MUST pause, refactor those raw locators back into the `pages/` object, and replace them with standard getter/method calls in the spec before presenting the code to the user.
 
 ## MANDATORY VERIFICATION CHECKLIST:
+- [ ] No `console.log` statements are left in the spec (used `test.step()` instead).
 - [ ] Global `AGENTS.md` rules are followed (No locators, data, or env vars in specs; Page Objects and Components used correctly).
 - [ ] Prioritizing `getByRole()` over any other locator strategy. Order of locator strategies:
    1. getByRole

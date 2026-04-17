@@ -37,27 +37,27 @@ export class FooterLinks {
   }
 
   get aboutLink() {
-    return this.root.getByRole('link', { name: this.FOOTER_LINKS.ABOUT });
+    return this.root.getByRole('link', { name: this.FOOTER_LINKS.ABOUT, exact: true });
   }
 
   get businessLink() {
-    return this.root.getByRole('link', { name: this.FOOTER_LINKS.BUSINESS });
+    return this.root.getByRole('link', { name: this.FOOTER_LINKS.BUSINESS, exact: true });
   }
 
   get legalLink() {
-    return this.page.getByRole('link', { name: this.FOOTER_LINKS.LEGAL });
+    return this.page.getByRole('link', { name: this.FOOTER_LINKS.LEGAL, exact: true });
   }
 
   get vacanciesLink() {
-    return this.page.getByRole('link', { name: this.FOOTER_LINKS.VACANCIES });
+    return this.page.getByRole('link', { name: this.FOOTER_LINKS.VACANCIES, exact: true });
   }
 
   get bankingInfoLink() {
-    return this.page.getByRole('link', { name: this.FOOTER_LINKS.BANKING_INFO });
+    return this.page.getByRole('link', { name: this.FOOTER_LINKS.BANKING_INFO, exact: true });
   }
 
   get contactsLink() {
-    return this.page.getByRole('link', { name: this.FOOTER_LINKS.CONTACTS });
+    return this.page.getByRole('link', { name: this.FOOTER_LINKS.CONTACTS, exact: true });
   }
 
   get madeInSbp() {
@@ -66,6 +66,10 @@ export class FooterLinks {
 
   get gorodaLink() {
     return this.root.getByRole('link', { name: 'Города', exact: false });
+  }
+
+  get supportPhone() {
+    return this.page.locator('a[href^="tel:"]').first();
   }
 
   // Methods

@@ -1,4 +1,4 @@
-import type { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { Base } from './Base.page';
 import { LoginComponent } from '../components/Login.component';
 
@@ -41,6 +41,11 @@ export class ZeroConfig extends Base {
       headers: root.locator('thead th'),
       rows: root.locator('tbody tr'),
     };
+  }
+
+  // Methods
+  async pageIsLoaded(): Promise<void> {
+    await expect(this.zeroConfigTable).toBeVisible();
   }
 
   /**
