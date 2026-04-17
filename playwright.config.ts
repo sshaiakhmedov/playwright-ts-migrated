@@ -5,8 +5,11 @@ dotenv.config({ quiet: true });
 import type { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
+  // Run tests in files in parallel
+  fullyParallel: true,
+
   // Limit the number of workers on CI, use default locally
-  workers: process.env.CI ? 5 : 1,
+  workers: process.env.CI ? 10 : 5,
 
   // Directory for test artifacts (traces, screenshots, etc.)
   outputDir: 'test-results',

@@ -1,8 +1,8 @@
-import type { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { Base } from './Base.page';
 import { LoginComponent } from '../components/Login.component';
 
-export class Sputnik8 extends Base {
+export class SputnikHome extends Base {
   protected readonly path = '/';
   readonly loginComponent: LoginComponent;
 
@@ -16,7 +16,6 @@ export class Sputnik8 extends Base {
     = /(\d+) экскурси[яйи] в (\d+) городах на одном сайте. Онлайн бронирование, настоящие отзывы, расписание на каждый день./;
 
   // Web locators
-
   get headerContainer() {
     const container = this.page.locator('div.layout-header');
     return {
@@ -49,9 +48,36 @@ export class Sputnik8 extends Base {
     };
   }
 
+  get cityBannerSPB() {
+    const component = this.page.locator('.city-banner-activities.city-banner-activities_big').first();
+    return {
+      component,
+      cityLink: component.getByRole('link', { name: 'Санкт-Петербург' }),
+    };
+  }
+
+  get popularCity() {
+    const component = this.page.locator('.col-12.block_mt-30');
+    return {
+      component,
+      header: component.getByText(/Популярные города/i),
+      citiesList: component.getByRole('link'),
+    };
+  }
+
+  // Methods
   async login(): Promise<void> {
     await this.headerContainer.container.waitFor({ state: 'visible' });
     await this.headerContainer.loginButton.waitFor({ state: 'visible' });
     await this.headerContainer.loginButton.click();
+  }
+
+  async goToBanner(locator: Locator): Promise<void> {
+    await locator.click();
+  }
+
+  // Methods to form dynamic Locators
+  cityByName(cityName: string): Locator {
+    return this.popularCity.citiesList.filter({ hasText: cityName });
   }
 }

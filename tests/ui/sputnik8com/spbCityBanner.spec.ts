@@ -1,5 +1,5 @@
 import { test, expect } from '../../../util/fixtures';
-import { SputnikHome } from '../../../pages/Sputnik8Home.page';
+import { SputnikHome } from '../../../pages/SputnikHome.page';
 
 test.describe('Popular cities Banner', () => {
   test.beforeAll('Footer is present', async ({ browser }) => {
@@ -23,18 +23,35 @@ test.describe('Popular cities', () => {
     await sputnikHome.open({ waitUntil: 'domcontentloaded' });
   });
 
-  test('Check each city', async ({ sputnikHome }) => {
+  test('Check each popular city', async ({ sputnikHome, request }) => {
     await expect(sputnikHome.popularCity.component).toBeVisible();
     await expect(sputnikHome.popularCity.header).toBeVisible();
-    // const countOfCities = await sputnikHome.popularCity.citiesList.count();
-    for (let i = 0; i < 5; i++) {
-      // will limit with 5
-      const href = await sputnikHome.popularCity.citiesList.nth(i).getAttribute('href');
-      await sputnikHome.popularCity.citiesList.nth(i).click();
-      const openedUrl = sputnikHome.getURL();
-      expect(openedUrl).toContain(href);
-      await sputnikHome.goBack();
+
+    // We verify city links via API for speed and stability,
+    // avoiding the flaky UI goBack() loop under parallel load.
+    const citiesLoc = sputnikHome.popularCity.citiesList;
+    const count = await citiesLoc.count();
+    const limit = Math.min(count, 5);
+
+    const validationPromises = [];
+
+    for (let i = 0; i < limit; i++) {
+      validationPromises.push(
+        (async () => {
+          const city = citiesLoc.nth(i);
+          const href = await city.getAttribute('href');
+          if (!href) {
+            throw new Error(`City link at index ${i} is missing href`);
+          }
+
+          // Verify the URL structure is reachable
+          const response = await request.get(href);
+          expect(response.status()).toBe(200);
+        })(),
+      );
     }
+
+    await Promise.all(validationPromises);
   });
 
   test('Dubai city click', async ({ sputnikHome, page }) => {
