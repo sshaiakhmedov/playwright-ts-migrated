@@ -3,19 +3,18 @@ stages:
   - deploy
 
 variables:
-  # Base image for most jobs
-  PLAYWRIGHT_IMAGE: mcr.microsoft.com/playwright:v1.52.0-jammy
+  # Base image for most jobs - Using GitLab Dependency Proxy to cache Docker Hub images
+  PLAYWRIGHT_IMAGE: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/mcr.microsoft.com/playwright:v1.52.0-jammy
   # Node version for non-playwright jobs
   NODE_VERSION: "20"
 
-# Global cache for npm dependencies and Playwright browsers
+# Global cache for npm dependencies
 cache:
   key:
     files:
       - package-lock.json
   paths:
     - node_modules/
-    - ~/.cache/ms-playwright/
 
 # ---------------------------------------------------------
 # Job: UI Tests
@@ -25,8 +24,7 @@ test:ui:
   image: $PLAYWRIGHT_IMAGE
   script:
     - npm ci
-    # Install browsers ONLY if they are not in cache
-    - npx playwright install --with-deps chromium
+    # redundant "playwright install" removed as official image already contains browsers
     # Run tests
     - npm run test:all:chrome
   artifacts:
