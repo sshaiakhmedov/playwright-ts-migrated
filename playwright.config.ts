@@ -9,7 +9,7 @@ const config: PlaywrightTestConfig = {
   fullyParallel: true,
 
   // Limit the number of workers on CI, use default locally
-  workers: process.env.CI ? 10 : 5,
+  workers: process.env.CI ? 6 : 5,
 
   // Directory for test artifacts (traces, screenshots, etc.)
   outputDir: 'test-results',
