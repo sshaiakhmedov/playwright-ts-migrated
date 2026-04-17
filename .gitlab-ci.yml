@@ -3,8 +3,8 @@ stages:
   - deploy
 
 variables:
-  # Base image for most jobs - Using GitLab Dependency Proxy to cache Docker Hub images
-  PLAYWRIGHT_IMAGE: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/mcr.microsoft.com/playwright:v1.52.0-jammy
+  # Base image for most jobs
+  PLAYWRIGHT_IMAGE: mcr.microsoft.com/playwright:v1.52.0-jammy
   # Node version for non-playwright jobs
   NODE_VERSION: "20"
 
