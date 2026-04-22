@@ -154,8 +154,10 @@ export abstract class Base {
     await this.page.reload();
   }
 
-  async goBack(): Promise<void> {
-    await this.page.goBack({ waitUntil: 'domcontentloaded' });
+  async goBack(
+    options: { waitUntil?: 'load' | 'domcontentloaded' | 'networkidle' | 'commit' } = { waitUntil: 'domcontentloaded' },
+  ): Promise<void> {
+    await this.page.goBack(options);
   }
 
   async goForward(): Promise<void> {
