@@ -33,7 +33,7 @@ export abstract class Base {
   ) {
     const page = await browser.newPage();
     const po = new PageClass(page);
-    await po.open(options || { waitUntil: 'domcontentloaded' });
+    await po.open(options);
     try {
       await action(po);
     } finally {
@@ -41,7 +41,9 @@ export abstract class Base {
     }
   }
 
-  async open(options?: { waitUntil?: 'load' | 'domcontentloaded' | 'networkidle' | 'commit' }): Promise<void> {
+  async open(
+    options: { waitUntil?: 'load' | 'domcontentloaded' | 'networkidle' | 'commit' } = { waitUntil: 'domcontentloaded' },
+  ): Promise<void> {
     await this.page.goto(this.path, options);
   }
 

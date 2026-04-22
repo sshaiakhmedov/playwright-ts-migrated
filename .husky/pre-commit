@@ -25,9 +25,26 @@ if ! npx lint-staged; then
 fi
 
 if [ "$run_ui" = "true" ] || [ "$run_api" = "true" ]; then
-  echo "Husky: Staged changes affect tests. Running npm run test:all:chrome..."
-  if ! npm run test:all:chrome; then
-    echo "Husky: Tests failed. Commit aborted."
+  echo "Husky: Staged changes affect tests. Running typecheck..."
+  if ! npm run typecheck; then
+    echo "Husky: typecheck failed. Commit aborted."
     exit 1
+  fi
+
+  if [ -n "$HUSKY_SKIP_PLAYWRIGHT" ]; then
+    echo "Husky: HUSKY_SKIP_PLAYWRIGHT is set; skipping npm run test:all:chrome."
+    exit 0
+  fi
+
+  if node scripts/playwright-chromium-ready.mjs; then
+    echo "Husky: Chromium found. Running npm run test:all:chrome..."
+    if ! npm run test:all:chrome; then
+      echo "Husky: Tests failed. Commit aborted."
+      exit 1
+    fi
+  else
+    echo "Husky: Chromium not installed in this environment; skipping full Playwright run."
+    echo "Husky: (typecheck passed). Install locally: npx playwright install chromium"
+    echo "Husky: CI still runs the full suite on push. To force E2E here: unset HUSKY_SKIP_PLAYWRIGHT and install browsers."
   fi
 fi

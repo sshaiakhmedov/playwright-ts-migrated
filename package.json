@@ -18,6 +18,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
+    "playwright:chromium-ready": "node scripts/playwright-chromium-ready.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

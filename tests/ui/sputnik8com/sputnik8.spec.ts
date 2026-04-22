@@ -3,7 +3,7 @@ import { SputnikHome } from '../../../pages/SputnikHome.page';
 
 test.describe('Main Landing Page', () => {
   test.beforeEach('start with landing page', async ({ sputnikHome }) => {
-    await sputnikHome.open({ waitUntil: 'domcontentloaded' });
+    await sputnikHome.open();
   });
 
   test('Top Header component', async ({ sputnikHome }) => {

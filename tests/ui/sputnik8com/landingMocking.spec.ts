@@ -10,7 +10,7 @@ test.describe('Landing Page Performance Optimization (Integration Mocking)', () 
     const startTime = Date.now();
 
     // Navigate to the homepage. The media/trackers will be intercepted and bypassed instantaneously.
-    await sputnikHome.open({ waitUntil: 'domcontentloaded' });
+    await sputnikHome.open();
 
     // Validate Core Component Reliability
     // Even without real images or marketing analytics tracking scripts,

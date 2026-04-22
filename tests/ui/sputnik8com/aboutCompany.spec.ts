@@ -4,8 +4,7 @@ import { AboutCompany } from '../../../pages/AboutCompany.page';
 test.describe('About Company Page', () => {
   test.describe('Footer Navigation', () => {
     test.beforeEach('Navigate to home', async ({ sputnikHome }) => {
-      await sputnikHome.open({ waitUntil: 'domcontentloaded' });
-      await sputnikHome.pageIsLoaded();
+      await sputnikHome.open();
     });
 
     test('Verify "О компании" link in the footer routes to the About page', async ({ sputnikHome }) => {
@@ -17,7 +16,7 @@ test.describe('About Company Page', () => {
   test.describe('Promo Links Interaction', () => {
     // Following SKILL.md Rule #4: Use Deep Links! Do not waste time clicking through the UI just to reach the feature.
     test.beforeEach('Deep link directly to About page', async ({ aboutCompanyPage }) => {
-      await aboutCompanyPage.open({ waitUntil: 'domcontentloaded' });
+      await aboutCompanyPage.open();
       await aboutCompanyPage.pageIsLoaded();
     });
 

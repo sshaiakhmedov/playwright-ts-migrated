@@ -14,7 +14,7 @@ Playwright can be used for API testing alongside UI testing via the built-in `re
 If you are running or writing API tests against the local PostgREST setup, the database and API must be running.
 
 ### 1. Start the Server
-Before running `npm run test:api` or committing API test changes (which triggers the husky hook), ensure the Docker containers are running:
+Before running `npm run test:api` or committing API test changes (Husky runs typecheck and may run the full Chrome suite when Chromium is installed), ensure the Docker containers are running when you need API tests to execute locally:
 ```bash
 docker-compose up -d
 ```

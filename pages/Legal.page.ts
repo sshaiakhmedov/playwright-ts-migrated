@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { Base } from './Base.page';
 
 export class Legal extends Base {
@@ -52,7 +52,15 @@ export class Legal extends Base {
   }
 
   // Methods
-  async pageIsLoaded(): Promise<void> {
+  async mainPageComponentsArePresent(): Promise<void> {
+    await this.page.waitForURL(`**${Legal.URLS.LEGAL_PAGE}`);
+    await this.supportSection.section.waitFor({ state: 'visible' });
+    await this.professionalsSection.section.waitFor({ state: 'visible' });
+    await this.pageLinks.faq.waitFor({ state: 'visible' });
     await this.footer.componentIsLoaded();
+  }
+
+  async pageIsLoaded(): Promise<void> {
+    await this.mainPageComponentsArePresent();
   }
 }

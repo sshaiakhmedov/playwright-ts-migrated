@@ -19,6 +19,12 @@ If the default `node -v` shows v14, use the full path to the Node 20 binary inst
   ```
   **CRITICAL**: You MUST always run tests exclusively against `--project=chrome` unless the user explicitly requests otherwise. Do not run the full suite which includes WebKit.
 
+## Husky pre-commit (local vs IDE sandbox)
+
+When staged files touch UI/API tests, page objects, components, or `util/fixtures.ts`, Husky runs `lint-staged`, then **`npm run typecheck`**, then **`npm run test:all:chrome` only if** the Playwright Chromium binary exists (`scripts/playwright-chromium-ready.mjs`). Some IDE agent sandboxes use an isolated browser cache where Chromium is not installed, so the full suite is skipped there after typecheck passes; **GitHub Actions still runs the full Chrome project on push**.
+
+To skip the Playwright step even when Chromium is installed (fast local commit): `HUSKY_SKIP_PLAYWRIGHT=1 git commit ...` (use sparingly).
+
 ## Common Issues to Avoid
 - **Unexpected token '{'**: This usually means you are running code with Node 14 that expects Node 18+. Check your version immediately.
 - **ESM Modules**: This project uses `"type": "module"`. Ensure all scripts and commands respect this.

@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { Base } from './Base.page';
 import { LoginComponent } from '../components/Login.component';
 
@@ -66,11 +66,15 @@ export class SputnikHome extends Base {
   }
 
   // Methods
-  async pageIsLoaded(): Promise<void> {
-    await expect(this.headerContainer.container).toBeVisible();
-    await expect(this.topContainer.h1Header).toBeVisible();
-    await expect(this.popularCity.component).toBeVisible();
+  async mainPageComponentsArePresent(): Promise<void> {
+    await this.headerContainer.container.waitFor({ state: 'visible' });
+    await this.topContainer.h1Header.waitFor({ state: 'visible' });
+    await this.popularCity.component.waitFor({ state: 'visible' });
     await this.footer.componentIsLoaded();
+  }
+
+  async pageIsLoaded(): Promise<void> {
+    await this.mainPageComponentsArePresent();
   }
 
   async login(): Promise<void> {

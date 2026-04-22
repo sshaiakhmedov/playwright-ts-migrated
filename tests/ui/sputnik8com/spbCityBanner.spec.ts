@@ -9,7 +9,7 @@ test.describe('Popular cities Banner', () => {
   });
 
   test.beforeEach('goto home', async ({ sputnikHome }) => {
-    await sputnikHome.open({ waitUntil: 'domcontentloaded' });
+    await sputnikHome.open();
   });
 
   test('Click on SBP banner title opens /sbp-city in the same tab', async ({ sputnikHome, page }) => {
@@ -20,7 +20,7 @@ test.describe('Popular cities Banner', () => {
 
 test.describe('Popular cities', () => {
   test.beforeEach('go home', async ({ sputnikHome }) => {
-    await sputnikHome.open({ waitUntil: 'domcontentloaded' });
+    await sputnikHome.open();
   });
 
   test('Check each popular city', async ({ sputnikHome, request }) => {

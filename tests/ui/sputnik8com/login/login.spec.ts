@@ -4,7 +4,7 @@ test.describe.skip('Failed Login:', function () {
   test.describe.configure({ mode: 'parallel' });
 
   test.beforeEach('Trigger Login popup', async ({ sputnikHome }) => {
-    await sputnikHome.open({ waitUntil: 'domcontentloaded' });
+    await sputnikHome.open();
     await sputnikHome.login();
   });
 

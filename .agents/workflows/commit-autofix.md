@@ -6,7 +6,7 @@ description: How to stage, commit, push changes, and check GitHub Actions CI sta
 
 When committing code, follow these steps exactly:
 
-1. **Verify Tests Pass**: Run local tests for the modified files (A Husky pre-commit hook is also configured to run `test:ui` or `test:api`).
+1. **Verify Tests Pass**: Run local tests for the modified files when possible. Husky runs `lint-staged`, `npm run typecheck`, then `npm run test:all:chrome` only if Playwright Chromium is installed (see `agents.md`); otherwise rely on CI for the full suite.
 2. **Review Changes**: Run `git status` and `git diff` to ensure no locators, credentials, or `.only` blocks are left.
 3. **Stage Specific Files**: Run `git add <file>` to stage specific files. Avoid `git add .` unless fully confident.
 4. **Commit**: Run `git commit -m "Your precise message"` with an imperative summary (<= 50 chars).

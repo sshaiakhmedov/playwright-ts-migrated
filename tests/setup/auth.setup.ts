@@ -8,7 +8,7 @@ setup('authenticate and save state', async ({ demoblazeHomePage, page }) => {
   const PASSWORD = process.env.DEMOBLAZE_PASSWORD;
 
   // 1. Navigate to the page
-  await demoblazeHomePage.open({ waitUntil: 'domcontentloaded' });
+  await demoblazeHomePage.open();
 
   // 2. Open login modal
   await demoblazeHomePage.loginModal.openLoginModal();
