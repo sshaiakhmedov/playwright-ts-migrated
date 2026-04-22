@@ -7,6 +7,7 @@ export class Legal extends Base {
     PERECHEN_VIDOV_DEYATELNOSTI: '/ru/pages/it',
     VACANCIES: '/ru/jobs',
     FAQ_PAGE: '/ru/faq',
+    KARTOCHKA_YUR_LITSA: 'https://disk.360.yandex.ru/i/L7_4fV3uqgT2_A',
   } as const;
 
   readonly path = Legal.URLS.LEGAL_PAGE;

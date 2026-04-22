@@ -164,6 +164,11 @@ export abstract class Base {
     await this.page.goForward();
   }
 
+  async openInNewTab(link: Locator): Promise<Page> {
+    const [newTab] = await Promise.all([this.page.waitForEvent('popup'), link.click()]);
+    return newTab;
+  }
+
   async getCount(locator: Locator): Promise<number> {
     return await locator.count();
   }

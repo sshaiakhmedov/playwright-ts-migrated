@@ -40,5 +40,11 @@ test.describe('Pravovaya Informatisya', () => {
       await expect(sputnikHome.page).toHaveURL(Legal.URLS.PERECHEN_VIDOV_DEYATELNOSTI);
       await sputnikHome.goBack();
     });
+
+    test('Kartochka_yur_litsa link routs to new tab on yandex disk', async ({ legalPage }) => {
+      const newTab = await legalPage.openInNewTab(legalPage.pageLinks.karochka_yur_litsa);
+      await expect(newTab).toHaveURL(Legal.URLS.KARTOCHKA_YUR_LITSA);
+      await newTab.close();
+    });
   });
 });
