@@ -12,6 +12,7 @@
     "test:ui": "playwright test tests/ui",
     "test:api": "playwright test tests/api",
     "test:all:chrome": "playwright test --project=chrome",
+    "spec": "node scripts/run-chrome-spec.mjs",
     "test:docker": "./run-tests.sh",
     "test:headed": "playwright test --headed",
     "allure": "allure generate ./allure-results --clean && allure open ./allure-report",

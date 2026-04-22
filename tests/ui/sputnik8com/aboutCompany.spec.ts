@@ -48,10 +48,10 @@ test.describe('About Company Page', () => {
 
       // "Наш канал в Яндекс.Дзен" -> new tab popup
       // TODO: skipping since started to hit captcha page
-      await test.step.skip('Validate native "Yandex Dzen" social popup flow', async () => {
-        const [newPage] = await Promise.all([aboutCompanyPage.page.context().waitForEvent('page'), yandexDzen.click()]);
-        await expect(newPage).toHaveURL(URLS.YANDEX_DZEN);
-        await newPage.close();
+      await test.step('Validate native "Yandex Dzen" social popup flow', async () => {
+        const newTab = await aboutCompanyPage.openInNewTab(yandexDzen);
+        await expect(newTab).toHaveURL(URLS.YANDEX_DZEN);
+        await newTab.close();
       });
     });
   });
