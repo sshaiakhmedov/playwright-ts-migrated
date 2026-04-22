@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { Base } from './Base.page';
 
 export class Legal extends Base {
@@ -37,6 +37,14 @@ export class Legal extends Base {
       title: section.getByText('Специалисты «Спутника»'),
       specialistCard: section.locator('.c-contacts__professional'), // last one should be excliuded via .not(:last-child)
     };
+  }
+
+  specialistCardImage(cardLocator: Locator): Locator {
+    return cardLocator.locator('.professional__photo');
+  }
+
+  specialistCardEmail(cardLocator: Locator): Locator {
+    return cardLocator.locator('.professional__email');
   }
 
   get pageLinks() {

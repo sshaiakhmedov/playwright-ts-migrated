@@ -46,4 +46,23 @@ test.describe('Pravovaya Informatisya', () => {
       await newTab.close();
     });
   });
+
+  test.describe('Specialist Cards', () => {
+    test.beforeEach('Open Legal page', async ({ legalPage }) => {
+      await legalPage.open();
+    });
+
+    test('specialist cards have image and email', async ({ legalPage }) => {
+      const specialistCards = legalPage.professionalsSection.specialistCard;
+      const count = await specialistCards.count();
+
+      for (let i = 0; i < count; i++) {
+        const card = specialistCards.nth(i);
+
+        await expect(legalPage.specialistCardImage(card)).toBeVisible();
+        await expect(legalPage.specialistCardEmail(card)).toBeVisible();
+        expect(await legalPage.specialistCardEmail(card).getAttribute('href')).toMatch(/^mailto:/);
+      }
+    });
+  });
 });
