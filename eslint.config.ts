@@ -42,4 +42,24 @@ export default tseslint.config(
       'playwright/no-skipped-test': 'off',
     },
   },
+  {
+    files: ['**/*.spec.ts'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'CallExpression[callee.object.name="page"][callee.property.name="locator"]',
+          message: 'Inline locators (page.locator) are strictly forbidden in spec files. Move this to a Page Object Model.',
+        },
+        {
+          selector: 'CallExpression[callee.object.name="page"][callee.property.name=/^getBy/]',
+          message: 'Inline locators (page.getBy*) are strictly forbidden in spec files. Move this to a Page Object Model.',
+        },
+        {
+          selector: 'CallExpression[callee.object.name="page"][callee.property.name="waitForTimeout"]',
+          message: 'Explicit timeouts (page.waitForTimeout) are strictly forbidden. Use Playwright auto-waiting or expect assertions.',
+        },
+      ],
+    },
+  },
 );

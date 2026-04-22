@@ -27,6 +27,8 @@ If the default `node -v` shows v14, use the full path to the Node 20 binary inst
 To prevent tunnel-vision, context fragmentation, and architectural violations during script generation, **EVERY AI AGENT MUST STRICTLY ADHERE TO THIS PRE-FLIGHT CHECKLIST** before writing any test code:
 
 1. **Never Assume Architecture:** Do not blindly parse JSON recordings or raw prompts directly into `.spec.ts` files without aligning them to the repository's native Base page models.
-2. **Execute Workflows First:** If creating a UI test, you **MUST** review `.agents/workflows/create-ui-test.md` and `.agents/skills/ui-tests/SKILL.md` to refresh your active context memory before generating code.
+2. **Execute Workflows & Plan First:** If creating a UI or API test, you **MUST** review the corresponding workflow in `.agents/workflows/` and skill in `.agents/skills/`. Before writing ANY code, you **MUST** generate a `task.md` checklist artifact outlining the steps and wait for user approval. Do NOT skip straight to writing code.
 3. **Reference Benchmarks:** You **MUST** utilize `view_file` to read a neighboring, high-quality test file (e.g., `tests/ui/sputnik8com/spbCityBanner.spec.ts`) to anchor your execution matrix (e.g., observing how fixtures are injected, and how `test.step()` blocks and Deep Links are constructed).
 4. **Zero Tolerance for Inline Mutators:** Never write raw string locators or explicit timeouts (`waitForTimeout`) directly inside a spec. 100% of locators and URLs belong in Page Object encapsulations.
+5. **Clean Debug Code:** NEVER leave `console.log` statements in final `.spec.ts` files. Use `test.step()` for visibility and progress tracking.
+6. **Externalize Test Data:** NEVER hardcode user data, credentials, emails, or expected large text blocks in `.spec.ts` files. All test data MUST be imported from the `data/` directory or defined as constants in Page Objects if appropriate.
