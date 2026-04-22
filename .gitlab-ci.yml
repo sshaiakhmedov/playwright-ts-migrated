@@ -27,11 +27,10 @@ test:ui:
     # redundant "playwright install" removed as official image already contains browsers
     # Run tests
     - npm run test:all:chrome
+  # Only Allure raw results: feeds the `pages` job. Skips Playwright HTML + test-results upload (faster, you use Allure URL in Slack).
   artifacts:
     when: always
     paths:
-      - playwright-report/
-      - test-results/
       - allure-results/
     expire_in: 30 days
   rules:
@@ -40,7 +39,8 @@ test:ui:
 
 
 # ---------------------------------------------------------
-# Job: Generate Allure Report
+# Job: Generate Allure Report (GitLab Pages)
+# Published site URL is available as CI_PAGES_URL in this job (use for Slack).
 # ---------------------------------------------------------
 pages:
   stage: deploy
@@ -48,7 +48,8 @@ pages:
   needs:
     - job: test:ui
   before_script:
-    - apt-get update && apt-get install -y default-jre
+    # Headless JRE + no recommends keeps this job smaller and faster than default-jre.
+    - apt-get update -qq && apt-get install -y --no-install-recommends default-jre-headless
     - npm install -g allure-commandline
   script:
     # Collect all allure-results from previous jobs

@@ -14,12 +14,14 @@ const config: PlaywrightTestConfig = {
   // Directory for test artifacts (traces, screenshots, etc.)
   outputDir: 'test-results',
 
-  // Use multiple reporters
-  reporter: [
-    ['list'], // Shows test statistics in the terminal
-    ['allure-playwright'], // Keeps generating Allure reports
-    ['html', { open: 'never' }], // The default Playwright HTML report
-  ],
+  // CI: skip HTML report (no upload to GitLab); local keeps HTML for debugging.
+  reporter: process.env.CI
+    ? [['list'], ['allure-playwright']]
+    : [
+        ['list'],
+        ['allure-playwright'],
+        ['html', { open: 'never' }],
+      ],
 
   /* Shared options */
   use: {
@@ -27,12 +29,14 @@ const config: PlaywrightTestConfig = {
     viewport: { width: 1920, height: 1080 }, // Enforce desktop viewport globally
     ignoreHTTPSErrors: true,
     video: 'on-first-retry',
-    screenshot: 'on',
+    // Full screenshots on every step are heavy in CI (disk + artifact upload).
+    screenshot: process.env.CI ? 'only-on-failure' : 'on',
     launchOptions: {
       args: ['--start-maximized'], // Tell Chrome to start maximized
     },
   },
-  retries: process.env.CI ? 2 : 0,
+  // CI retries multiply wall time when the suite hits real network flakiness; 1 is a compromise vs local 0.
+  retries: process.env.CI ? 1 : 0,
 
   projects: [
     {
