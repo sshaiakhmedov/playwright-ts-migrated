@@ -2,6 +2,7 @@ import { test as base, expect } from '@playwright/test';
 import { ApiManager } from '../api/ApiManager';
 import { ZeroConfig, DemoblazeHome, AboutCompany, SputnikHome, Legal } from '../pages';
 import { applyPerformanceMocks } from './mockHelpers';
+import { ContactChat } from '../components/ContactChat.component';
 
 type MyFixtures = {
   api: ApiManager;
@@ -10,6 +11,7 @@ type MyFixtures = {
   sputnikHome: SputnikHome;
   aboutCompanyPage: AboutCompany;
   legalPage: Legal;
+  contactChat: ContactChat;
 };
 
 const test = base.extend<MyFixtures>({
@@ -43,6 +45,10 @@ const test = base.extend<MyFixtures>({
   aboutCompanyPage: async ({ page }, use) => {
     const aboutPage = new AboutCompany(page);
     await use(aboutPage);
+  },
+  contactChat: async ({ page }, use) => {
+    const contactChat = new ContactChat(page);
+    await use(contactChat);
   },
 });
 
