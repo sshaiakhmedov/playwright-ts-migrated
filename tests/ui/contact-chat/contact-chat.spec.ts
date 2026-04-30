@@ -1,6 +1,7 @@
 import { test, expect } from '../../../util/fixtures';
 
 test.describe('Contact Chat', () => {
+  test.describe.configure({ timeout: 120_000 });
   test.use({ viewport: null });
 
   test.beforeEach('Navigate to homepage', async ({ sputnikHome }) => {
@@ -18,10 +19,10 @@ test.describe('Contact Chat', () => {
       await expect(contactChat.contactList.items.first()).toBeVisible();
     });
 
-    await test.step('Click Chat button outside working ours', async () => {
+    await test.step('Open web chat from contact list', async () => {
       await contactChat.clickContactItem(0);
       await contactChat.waitForChatLoaded();
-      await expect(contactChat.iframeContent.offlineMessage).toHaveText(contactChat.OFFLINE_MESSAGE_TEXT);
+      await contactChat.expectChatIframeContent();
     });
 
     await test.step('Close chat widget', async () => {

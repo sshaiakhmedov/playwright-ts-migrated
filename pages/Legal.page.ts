@@ -3,6 +3,12 @@ import { Base } from './Base.page';
 
 export class Legal extends Base {
   static readonly URLS = {
+    /** Deep link / footer «Контакты» — same page object as legal, without #legal. */
+    CONTACTS_PLAIN: '/ru/contacts',
+    /** Footer «Контакты»: same screen as «Правовая информация», different URL (no #legal fragment). */
+    CONTACTS_PAGE: /\/ru\/contacts\/?$/,
+    /** Same contacts route with optional legal anchor (deep links, footer «Правовая информация»). */
+    CONTACTS_OR_LEGAL_PAGE: /\/ru\/contacts\/?(#legal)?$/,
     LEGAL_PAGE: '/ru/contacts#legal',
     PERECHEN_VIDOV_DEYATELNOSTI: '/ru/pages/it',
     VACANCIES: '/ru/jobs',
@@ -61,7 +67,7 @@ export class Legal extends Base {
 
   // Methods
   async mainPageComponentsArePresent(): Promise<void> {
-    await this.page.waitForURL(`**${Legal.URLS.LEGAL_PAGE}`);
+    await this.page.waitForURL(Legal.URLS.CONTACTS_OR_LEGAL_PAGE);
     await this.supportSection.section.waitFor({ state: 'visible' });
     await this.professionalsSection.section.waitFor({ state: 'visible' });
     await this.pageLinks.faq.waitFor({ state: 'visible' });

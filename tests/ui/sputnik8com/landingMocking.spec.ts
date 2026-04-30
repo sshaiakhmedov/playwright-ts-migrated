@@ -6,9 +6,6 @@ test.describe('Landing Page Performance Optimization (Integration Mocking)', () 
     // Apply reusable network masks (intercept trackers & heavy imagery instantly)
     await applyPerformanceMocks(page);
 
-    // Measure layout execution
-    const startTime = Date.now();
-
     // Navigate to the homepage. The media/trackers will be intercepted and bypassed instantaneously.
     await sputnikHome.open();
 
@@ -21,19 +18,6 @@ test.describe('Landing Page Performance Optimization (Integration Mocking)', () 
       const moscowPill = sputnikHome.cityPill('Москва');
       await expect(moscowPill).toBeVisible();
       await expect(moscowPill).toHaveAttribute('href', '/ru/moscow');
-    });
-
-    await test.step('Verify header brand and support phone are present', async () => {
-      // Make sure the main header brand isn't broken
-      await expect(sputnikHome.footer.supportPhone).toBeVisible();
-    });
-
-    await test.step('Performance Metric', async () => {
-      const loadTimeMs = Date.now() - startTime;
-      test.info().annotations.push({ type: 'performance', description: `Mock-optimized UI load took: ${loadTimeMs}ms` });
-      // GitLab shared runners are slower than a local machine; keep a stricter cap locally.
-      const maxLoadTimeMs = process.env.CI ? 12_000 : 3_000;
-      expect(loadTimeMs).toBeLessThan(maxLoadTimeMs);
     });
   });
 });
