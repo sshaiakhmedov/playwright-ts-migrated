@@ -1,6 +1,6 @@
 import { test as base, expect } from '@playwright/test';
 import { ApiManager } from '../api/ApiManager';
-import { ZeroConfig, DemoblazeHome, AboutCompany, SputnikHome, Legal } from '../pages';
+import { ZeroConfig, DemoblazeHome, AboutCompany, SputnikHome, Legal, MvideoHome, MvideoSearchResults } from '../pages';
 import { applyPerformanceMocks } from './mockHelpers';
 import { ContactChat } from '../components/ContactChat.component';
 
@@ -12,6 +12,8 @@ type MyFixtures = {
   aboutCompanyPage: AboutCompany;
   legalPage: Legal;
   contactChat: ContactChat;
+  mvideoHome: MvideoHome;
+  mvideoSearch: MvideoSearchResults;
 };
 
 const test = base.extend<MyFixtures>({
@@ -49,6 +51,14 @@ const test = base.extend<MyFixtures>({
   contactChat: async ({ page }, use) => {
     const contactChat = new ContactChat(page);
     await use(contactChat);
+  },
+  mvideoHome: async ({ page }, use) => {
+    const mvideoHome = new MvideoHome(page);
+    await use(mvideoHome);
+  },
+  mvideoSearch: async ({ page }, use) => {
+    const mvideoSearch = new MvideoSearchResults(page);
+    await use(mvideoSearch);
   },
 });
 

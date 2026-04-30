@@ -46,6 +46,7 @@ const config: PlaywrightTestConfig = {
       expect: { timeout: 15000 },
       name: 'chrome',
       testDir: './tests/ui',
+      testIgnore: ['**/mvideo/**'],
       use: {
         browserName: 'chromium',
         baseURL: 'https://www.sputnik8.com/ru/',
@@ -56,10 +57,33 @@ const config: PlaywrightTestConfig = {
       },
     },
     {
+      expect: { timeout: 15000 },
+      name: 'mvideo',
+      testDir: './tests/ui/mvideo',
+      fullyParallel: false,
+      workers: 1,
+      use: {
+        browserName: 'chromium',
+        baseURL: 'https://www.mvideo.ru/',
+        locale: 'ru-RU',
+        viewport: { width: 1920, height: 1080 },
+        navigationTimeout: 15000,
+        actionTimeout: 15000,
+        userAgent:
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+        launchOptions: {
+          args: [
+            '--disable-blink-features=AutomationControlled',
+          ],
+        },
+      },
+    },
+    {
       timeout: 90000, // whole test (ms)
       expect: { timeout: 5000 }, // expect assertions
       name: 'UI Tests - WebKit',
       testDir: './tests/ui',
+      testIgnore: ['**/mvideo/**'],
       dependencies: ['setup'],
       use: {
         browserName: 'webkit', // Safari support
