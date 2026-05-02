@@ -8,7 +8,7 @@ test.describe('Postman Echo API Tests', () => {
       key3: 'extraParam',
     };
 
-    const response = await api.postman.getPostmanEcho(queryParams) as Record<string, Record<string, string>>;
+    const response = await api.postman.getPostmanEcho(queryParams);
     expect(response.args.key1).toBe('bar1');
     expect(response.args.key3).toBe('extraParam');
   });
@@ -20,7 +20,7 @@ test.describe('Postman Echo API Tests', () => {
       age: 30,
     };
 
-    const response = await api.postman.postPostmanEcho(payload) as Record<string, Record<string, unknown>>;
+    const response = await api.postman.postPostmanEcho(payload);
     expect(response.json.name).toBe('John Doe');
     expect(response.json.age).toBe(30);
     expect(response.json.email).toBe('john.doe@example.com');

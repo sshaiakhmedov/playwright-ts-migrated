@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { Base } from './Base.page';
 
 export class AboutCompany extends Base {
@@ -18,7 +18,7 @@ export class AboutCompany extends Base {
   } as const;
 
   // Locators
-  get promoLinks() {
+  get promoLinks(): Record<string, Locator> {
     return {
       addExcursion: this.page.getByRole('link', { name: 'Добавить экскурсию', exact: true }).first(),
       allExcursions: this.page.getByRole('link', { name: 'Все экскурсии', exact: true }).first(),

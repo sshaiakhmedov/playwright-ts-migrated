@@ -9,7 +9,7 @@ export class BaseAPI {
     this.token = token;
   }
 
-  async get(endpoint: string, options: Record<string, unknown> = {}, expectedStatus = 200): Promise<unknown> {
+  async get<T = unknown>(endpoint: string, options: Record<string, unknown> = {}, expectedStatus = 200): Promise<T> {
     const mergedOptions = {
       ...options,
       headers: {
@@ -18,18 +18,18 @@ export class BaseAPI {
       },
     };
     const response = await this.request.get(endpoint, mergedOptions);
-    return await this.validateAndParse(response, expectedStatus);
+    return await this.validateAndParse<T>(response, expectedStatus);
   }
 
-  async post(endpoint: string, options: Record<string, unknown> = {}, expectedStatus = 200): Promise<unknown> {
+  async post<T = unknown>(endpoint: string, options: Record<string, unknown> = {}, expectedStatus = 200): Promise<T> {
     const response = await this.request.post(endpoint, options);
-    return await this.validateAndParse(response, expectedStatus);
+    return await this.validateAndParse<T>(response, expectedStatus);
   }
 
   /**
    * Validates the response status code and parses the body as JSON or text.
    */
-  async validateAndParse(response: APIResponse, expectedStatus = 200): Promise<unknown> {
+  async validateAndParse<T = unknown>(response: APIResponse, expectedStatus = 200): Promise<T> {
     // 1. Check the status code first
     if (response.status() !== expectedStatus) {
       const errorBody = await response.text();
@@ -38,9 +38,9 @@ export class BaseAPI {
 
     // 2. Attempt to parse as JSON, fallback to text if it fails
     try {
-      return await response.json();
+      return await response.json() as T;
     } catch {
-      return await response.text();
+      return await response.text() as unknown as T;
     }
   }
 }
