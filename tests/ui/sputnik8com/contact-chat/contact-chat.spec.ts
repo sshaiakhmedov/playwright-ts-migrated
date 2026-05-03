@@ -1,4 +1,4 @@
-import { test, expect } from '../../../util/fixtures';
+import { test, expect } from '../../../../util/fixtures';
 
 test.describe('Contact Chat', () => {
   test.describe.configure({ timeout: 120_000 });
