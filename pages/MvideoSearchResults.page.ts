@@ -11,7 +11,7 @@ export class MvideoSearchResults extends Base {
   }
 
   get resultCountText(): Locator {
-    return this.page.getByText(/\d+ найдено товаров/);
+    return this.page.locator('.listing-page-title__count');
   }
 
   /**

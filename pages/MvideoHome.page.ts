@@ -48,6 +48,10 @@ export class MvideoHome extends Base {
     return this.page.getByRole('button', { name: 'Каталог' });
   }
 
+  get promo(): Locator {
+    return this.page.getByRole('img', { name: 'Скидка клиента до -90%' });
+  }
+
   get headerActions() {
     return {
       orderStatus: this.page.getByRole('link', { name: 'Статус заказа' }),
