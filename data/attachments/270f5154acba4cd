@@ -1,0 +1,633 @@
+# Test info
+
+- Name: Main Landing Page >> Moscow city pills open in the same tab and valid url
+- Location: /home/runner/work/playwright-ts-migrated/playwright-ts-migrated/tests/ui/sputnik8com/sputnik8.spec.ts:14:3
+
+# Error details
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 503
+    at /home/runner/work/playwright-ts-migrated/playwright-ts-migrated/tests/ui/sputnik8com/sputnik8.spec.ts:43:37
+    at /home/runner/work/playwright-ts-migrated/playwright-ts-migrated/tests/ui/sputnik8com/sputnik8.spec.ts:48:5
+```
+
+# Page snapshot
+
+```yaml
+- link "sputnik-logo":
+  - /url: /
+  - img "sputnik-logo"
+- textbox "Москва"
+- link:
+  - /url: /ru/wishlist_activities
+- text: Вход Регистрация Помощь
+- heading "Бронирование экскурсий по всему миру" [level=1]
+- text: 28203 экскурсии в 1096 городах на одном сайте. Онлайн бронирование, настоящие отзывы, расписание на каждый день.
+- link "2042 Санкт-Петербург":
+  - /url: /ru/st-petersburg
+- link "1021 Москва":
+  - /url: /ru/moscow
+- link "137 Минск":
+  - /url: /ru/minsk
+- link "418 Калининград":
+  - /url: /ru/kaliningrad
+- link "255 Казань":
+  - /url: /ru/kazan
+- link "303 Сочи":
+  - /url: /ru/sochi
+- link "265 Кисловодск":
+  - /url: /ru/kislovodsk
+- link "437 Стамбул":
+  - /url: /ru/istanbul
+- link "203 Нижний Новгород":
+  - /url: /ru/nizhnynovgorod
+- link "396 Ереван":
+  - /url: /ru/yerevan
+- link "439 Тбилиси":
+  - /url: /ru/tbilisi
+- link "202 Пятигорск":
+  - /url: /ru/pyatigorsk
+- text: Популярные экскурсии в Москве
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/24725-moskva-za-4-chasa-obzornaya-na-avtobuse-so-smotrovymi-ploschadkami
+- 'img "Москва за 4 часа: обзорная на автобусе со смотровыми площадками"'
+- link:
+  - /url: /ru/moscow/activities/24725-moskva-za-4-chasa-obzornaya-na-avtobuse-so-smotrovymi-ploschadkami
+- text: В любую погоду Хит продаж
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/24725-moskva-za-4-chasa-obzornaya-na-avtobuse-so-smotrovymi-ploschadkami
+- text: "4.7 (6959) Москва за 4 часа: обзорная на автобусе со смотровыми площадками Расширенное знакомство с Москвой для гостей столицы. Вы увидите главные достопримечательности города и узнаете его историю. завтра в 10:30 от 1 600 ₽ за человека"
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/21626-moskva-vechernyaya-obzornaya-ekskursiya-na-avtobuse
+- 'img "«Огни Столицы»: вечерняя обзорная экскурсия на автобусе"'
+- link:
+  - /url: /ru/moscow/activities/21626-moskva-vechernyaya-obzornaya-ekskursiya-na-avtobuse
+- text: Стоит увидеть 👀
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/21626-moskva-vechernyaya-obzornaya-ekskursiya-na-avtobuse
+- text: "4.7 (4626) «Огни Столицы»: вечерняя обзорная экскурсия на автобусе От старинных памятников архитектуры до современных небоскрёбов Москва-Сити. На экскурсии вы познакомитесь с историей Москвы под вечерними огнями иллюминации. завтра в 18:40 завтра в 19:00 от 1 600 ₽ за человека"
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/40475-moskva-za-3-chasa-obzornaya-na-avtobuse-s-progulkami
+- 'img "Москва за 3 часа: обзорная на автобусе с прогулками"'
+- link:
+  - /url: /ru/moscow/activities/40475-moskva-za-3-chasa-obzornaya-na-avtobuse-s-progulkami
+- text: Лучшие отзывы
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/40475-moskva-za-3-chasa-obzornaya-na-avtobuse-s-progulkami
+- text: "4.8 (7832) Москва за 3 часа: обзорная на автобусе с прогулками Классическая обзорная экскурсия по Москве: познакомьтесь со столицей за три часа! Вы увидите Красную площадь, Воробьёвы горы, Софийскую набережную и другие знаменитые достопримечательности. завтра в 10:00 завтра в 11:00 от 1 600 ₽ за человека"
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/89735-vnutri-stalinki-ekskursiya-po-stalinskim-vysotkam-s-vyborom-lokatsii
+- 'img "«Внутри сталинки»: экскурсия по сталинским высоткам с выбором локации"'
+- link:
+  - /url: /ru/moscow/activities/89735-vnutri-stalinki-ekskursiya-po-stalinskim-vysotkam-s-vyborom-lokatsii
+- text: С посещением! Новинка
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/89735-vnutri-stalinki-ekskursiya-po-stalinskim-vysotkam-s-vyborom-lokatsii
+- text: "4.6 (20) «Внутри сталинки»: экскурсия по сталинским высоткам с выбором локации Посетить сталинскую высотку и исследовать её интерьеры, историю или виды с высоты. завтра в 11:00 завтра в 13:00 от 2 199 ₽ за человека"
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/717-puteshestvie-k-zvezde-ekskursiya-na-shpil-stalinskoy-vysotki
+- 'img "«Путешествие к звезде»: экскурсия на шпиль Сталинской высотки"'
+- link:
+  - /url: /ru/moscow/activities/717-puteshestvie-k-zvezde-ekskursiya-na-shpil-stalinskoy-vysotki
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/717-puteshestvie-k-zvezde-ekskursiya-na-shpil-stalinskoy-vysotki
+- text: "4.8 (1247) «Путешествие к звезде»: экскурсия на шпиль Сталинской высотки Подняться на вершину гостиницы «Украина» и насладиться панорамами Москвы. завтра в 11:00 завтра в 13:00 2 700 ₽ за человека"
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/88992-sekrety-millionera-s-basmannoy-ekskursiya-v-osobnyak-staheeva
+- 'img "«Секреты миллионера с Басманной»: экскурсия в особняк Стахеева"'
+- link:
+  - /url: /ru/moscow/activities/88992-sekrety-millionera-s-basmannoy-ekskursiya-v-osobnyak-staheeva
+- text: Необычная
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/88992-sekrety-millionera-s-basmannoy-ekskursiya-v-osobnyak-staheeva
+- text: "4.8 (105) «Секреты миллионера с Басманной»: экскурсия в особняк Стахеева Рассмотреть готические витражи и экзотические комнаты особняка Стахеева. Сб, 9 май, 11:30 Вс, 10 май, 11:30 от 2 499 ₽ за человека"
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/27776-legendy-i-mify-stalinskih-vysotok
+- img "Легенды и мифы сталинских высоток"
+- link:
+  - /url: /ru/moscow/activities/27776-legendy-i-mify-stalinskih-vysotok
+- text: В любую погоду
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/27776-legendy-i-mify-stalinskih-vysotok
+- text: 4.8 (2151) Легенды и мифы сталинских высоток Увидеть знаменитые сталинские высотки и узнать историю их появления. Ср, 6 май, 14:00 Пт, 8 май, 11:00 от 1 600 ₽ за человека
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/35193-progulka-na-teplohode-ot-parka-zaryade-do-prichala-kievskiy
+- img "Прогулка на теплоходе от парка «Зарядье» до причала «Киевский»"
+- link:
+  - /url: /ru/moscow/activities/35193-progulka-na-teplohode-ot-parka-zaryade-do-prichala-kievskiy
+- link "activity card overlink":
+  - /url: /ru/moscow/activities/35193-progulka-na-teplohode-ot-parka-zaryade-do-prichala-kievskiy
+- text: 4.6 (1043) Прогулка на теплоходе от парка «Зарядье» до причала «Киевский» Увидеть парк Зарядье, Кремль, Воробьевы горы и другие достопримечательности столицы с воды. завтра в 11:06 завтра в 12:16 от 650 ₽ за человека Какие экскурсии в Москве вас интересуют?
+- link "1 Сегодня":
+  - /url: /ru/moscow?clicked=today_main-header#?date_from=2026-05-04&date_to=2026-05-04
+- link "315 Завтра":
+  - /url: /ru/moscow?clicked=tomorrow_main-header#?date_from=2026-05-05&date_to=2026-05-05
+- link "409 Послезавтра":
+  - /url: /ru/moscow?clicked=aftertomorrow_main-header#?date_from=2026-05-06&date_to=2026-05-06
+- link "1054 Выходные":
+  - /url: /ru/moscow?clicked=weekend_main-header#?date_from=2026-05-09&date_to=2026-05-10
+- link "226 Автобусные":
+  - /url: /ru/moscow/category/bus-tours
+- link "63 Обзорные":
+  - /url: /ru/moscow/category/highlights
+- link "25 Сталинские высотки":
+  - /url: /ru/moscow/sights/stalinskie-vysotki
+- link "60 Вечерние":
+  - /url: /ru/moscow/category/vechernie-ekskursii
+- link "7 Останкинская телебашня":
+  - /url: /ru/moscow/sights/ostankinskaya-telebashnya
+- link "536 Пешеходные":
+  - /url: /ru/moscow/category/walking-tours
+- link "35 Большой театр":
+  - /url: /ru/moscow/sights/bolshoy-teatr
+- link "396 Необычные":
+  - /url: /ru/moscow/category/off-the-beaten-track
+- link "5 Храм вооруженных сил России":
+  - /url: /ru/moscow/sights/hram-vooruzhennyh-sil-rossii
+- link "4 Мосфильм":
+  - /url: /ru/moscow/sights/mosfilm
+- link "1 Алмазный фонд":
+  - /url: /ru/moscow/sights/almaznyj-fond
+- link "101 Кремль":
+  - /url: /ru/moscow/sights/kremlin
+- link "22 Ночные":
+  - /url: /ru/moscow/category/nochnye-ekskursii
+- link "3 Оружейная палата":
+  - /url: /ru/moscow/sights/oruzheynaya-palata
+- link "33 Москва-Сити":
+  - /url: /ru/moscow/sights/moscow-city
+- heading "Отзывы туристов" [level=2]
+- text: "Светлана ★★★★★ Все отлично. Юлия Ш. ★★★★★ около 2 часов назад Пошла без особых ожиданий, а в итоге одна из самых интересных экскурсий за последнее время. Очень понравилось, что упор не на даты, а на живые истории семьи — местами даже неожиданно драматичные. И классно, что экскурсия не перегружена: есть момент передохнуть и выпить кофе в атмо... Показать ещё Мария ★★★★★ около 2 часов назад Очень тёплая и при этом захватывающая экскурсия. Было ощущение, что смотришь фильм, только всё это происходило на самом деле и прямо здесь. Истории Морозовых поданы так, что начинаешь им сопереживать, а не просто запоминаешь фамилии. Плюс классный момент с закрытым двором — ощущен... Показать ещё Екатерина Р. ★★★★★ около 4 часов назад Ничего не знала о семье Морозовых до экскурсии, позвала подруга. Но, как мне понравилось! Живая , интересная подача от гида, никаких лишних дат, не люблю это. После экскурсии захотелось узнать больше о Савве и Зинаиде, записалась к гиду на лекцию. Наталья П. ★★★★★ около 4 часов назад Хорошая экскурсия. Профессиональные гиды. Времени достаточно было для меня. В жаркую погоду наверное будет не очень - территория в чистом поле. А для зимы нормально. Музей дорога памяти в помещении. Нам и с погодой повезло. Народу много в выходной. Но это как водится Наталья А. ★★★★★ около 22 часов назад Экскурсия была очень познавательная,экскурсовод эрудированный,водитель автобуса профессионал.Посещенные места произвели отличное впечатление.Спасибо за поездку! Вера В. ★★★★★ около 23 часов назад Экскурсия обязательная к посещению! Увидели все ТОП места Москвы! Прекрасная гид Инесса, рассказала много интересного! Очень советую! Наталия Н. ★★★★★ около 24 часов назад Погода была ужасная, гид была адекватная, рассказывала кроме истории интересные факты, скучать не приходилось, несколько выходов из автобуса( ветер, дождь, снег), но все равно все выходили, потому что излагала материал с искринкой, даже моя внучка 5 лет что-то запомнила и слушала,... Показать ещё Роза Н. ★★★★★ 1 день назад Добрый день, могу оставить только хороший отзыв, уже не в первый раз я с вами, очень уютно, персонал отзывчивый и симпатичный, кухня хорошая, 2.5 часа мало для такой прогулки, спасибо вам! Рекомендую всем! Анна Ш. Эксперт ★★★★★ 1 день назад Посетила 10 и более экскурсий От лица нашей мини группы (я и супруг) хочу выразить благодарность нашему гиду Сергею за интереснейший рассказ. Не смотря на погоду с утра с жёлтым уровнем опасности экскурсия не только состоялась, но и к нам было проявлено очень заботливое отношение: чтобы не замёрзли, не намокли... Показать ещё Елена К. ★★★★★ 1 день назад Редкий случай, когда глубина погружения превзошла самый высокий уровень ожиданий. Я шла с солидным бэкграундом по теме Морозовых, но экскурсия выстроена так мастерски, что вместо перечисления знакомых фамилий получился живой, объемный портрет эпохи. Открылось множество деталей — ... Показать ещё Ольга О. Эксперт ★★★★★ 1 день назад Посетила 3 и более экскурсии Очень интересная экскурсия! Впечатляющие истории о женских судьбах. Прошли по всей территории монастыря, заходили в церкви и музей. Сергей не только интересный рассказчик, но и заботливый экскурсовод. Так как было очень холодно, много рассказывал в помещении, давая согреться, за ... Показать ещё"
+- paragraph: Сегодня, чтобы купить билет на экскурсию, необязательно идти в офис, оплачивать услуги турагентства или дожидаться прибытия на место, ведь можно заказать онлайн. Если у вас мало времени, выберите обзорную экскурсию на автобусе — тур даст самые важные знания о городе. Если времени немного больше, подберите пешеходные прогулки по личным интересам. Sputnik8 — платформа, которая связывает гидов и туристов, желающих пойти на экскурсию.
+- paragraph: "В 2026 году темы экскурсий стали намного разнообразнее. В список лучших вошли: прогулки по дворикам, гастрономические туры, квесты по городам России, Европы и Азии."
+- paragraph: "Стоимость прогулок с гидом зависит от трех факторов:"
+- list:
+  - listitem: ■ города, в котором проводится
+  - listitem: ■ количества участников в группе
+  - listitem: ■ личного мнения автора о стоимости своих услуг
+- paragraph:
+  - text: В среднем обзорная экскурсия по Москве для группы из трех-четырех человек стоит от 800 до 1600 руб. Цены на
+  - link "экскурсии в Санкт-Петербурге":
+    - /url: /ru/st-petersburg
+  - text: еще ниже — от 600 до 1200 рублей. Советуем готовиться к путешествию заранее.
+- paragraph:
+  - text: Если вы планируете поездку в один из самых красивых пригородов Санкт-Петербурга, отличным вариантом станет
+  - link "метеор в Петергоф":
+    - /url: /ru/st-petersburg/activities/23007-bilet-na-meteor-v-petergof-i-iz-petergofa
+  - text: — скоростной теплоход, который позволит добраться до Петергофа всего за 45 минут, наслаждаясь видами Невы.
+- paragraph:
+  - text: "Популярные достопримечательности:"
+  - link "экскурсии на Куршскую косу":
+    - /url: /ru/kaliningrad/sights/kurshskaya-kosa
+  - text: ","
+  - link "туры в Териберку":
+    - /url: /ru/murmansk/category/teriberka
+  - text: .
+- link "Санкт-Петербург":
+  - /url: https://www.sputnik8.com/ru/st-petersburg
+- link "Автобусные":
+  - /url: /ru/st-petersburg/category/bus-tours
+- link "Реки и каналы":
+  - /url: /ru/st-petersburg/category/reki-i-kanaly
+- link "Обзорные":
+  - /url: /ru/st-petersburg/category/highlights
+- link "Однодневные":
+  - /url: /ru/st-petersburg/category/odnodnevnye
+- link "Развод мостов":
+  - /url: /ru/st-petersburg/category/razvod-mostov
+- link "Необычные":
+  - /url: /ru/st-petersburg/category/off-the-beaten-track
+- link "Ночные":
+  - /url: /ru/st-petersburg/category/nochnye-ekskursii
+- link "Автомобильные":
+  - /url: /ru/st-petersburg/category/avtomobilnye
+- link "Музеи":
+  - /url: /ru/st-petersburg/category/museums
+- link "По пригородам":
+  - /url: /ru/st-petersburg/category/suburbs
+- link "Природные":
+  - /url: /ru/st-petersburg/category/nature
+- link "Дворы":
+  - /url: /ru/st-petersburg/category/dvory
+- link:
+  - /url: /ru/st-petersburg
+- text: 2041 экскурсия
+- link "Москва":
+  - /url: https://www.sputnik8.com/ru/moscow
+- link "Автобусные":
+  - /url: /ru/moscow/category/bus-tours
+- link "Обзорные":
+  - /url: /ru/moscow/category/highlights
+- link "Речные прогулки":
+  - /url: /ru/moscow/category/moskva-reka-progulki-na-teplohode
+- link "Пешеходные":
+  - /url: /ru/moscow/category/walking-tours
+- link "Необычные":
+  - /url: /ru/moscow/category/off-the-beaten-track
+- link "Вечерние":
+  - /url: /ru/moscow/category/vechernie-ekskursii
+- link "Выездные":
+  - /url: /ru/moscow/category/vyezdnye
+- link "Смотровые площадки":
+  - /url: /ru/moscow/category/smotrovye-ploshadki
+- link "По пригородам":
+  - /url: /ru/moscow/category/suburbs
+- link "Музеи":
+  - /url: /ru/moscow/category/museums
+- link "Теплоходы Radisson":
+  - /url: /ru/moscow/category/radisson-cruise
+- link "Индивидуальные":
+  - /url: /ru/moscow/category/individual
+- link:
+  - /url: /ru/moscow
+- text: 1022 экскурсии
+- link "Калининград":
+  - /url: https://www.sputnik8.com/ru/kaliningrad
+- link "Однодневные":
+  - /url: /ru/kaliningrad/category/odnodnevnye
+- link "Обзорные":
+  - /url: /ru/kaliningrad/category/highlights
+- link "Водные прогулки":
+  - /url: /ru/kaliningrad/category/vodnye
+- link "Мини-группы до 10 чел":
+  - /url: /ru/kaliningrad/category/mini-gruppy
+- link "Автобусные":
+  - /url: /ru/kaliningrad/category/bus-tours
+- link "Пешеходные":
+  - /url: /ru/kaliningrad/category/walking-tours
+- link "Необычные":
+  - /url: /ru/kaliningrad/category/off-the-beaten-track
+- link "Индивидуальные":
+  - /url: /ru/kaliningrad/category/individual
+- link "Замки":
+  - /url: /ru/kaliningrad/category/castles
+- link "Гастрономические":
+  - /url: /ru/kaliningrad/category/food
+- link "Балтийск, Янтарный, Светлогорск":
+  - /url: /ru/kaliningrad/category/baltiysk-yantarniy-svetlogorsk
+- link "Групповые":
+  - /url: /ru/kaliningrad/category/group
+- link "419 экскурсий":
+  - /url: /ru/kaliningrad
+- link "Прага":
+  - /url: https://www.sputnik8.com/ru/prague
+- link "Саксонская Швейцария":
+  - /url: /ru/prague/category/saksonskaya-shveytsariya
+- link "В другие города Европы":
+  - /url: /ru/prague/category/v-drugie-goroda-evropy
+- link "Замки":
+  - /url: /ru/prague/category/castles
+- link "Индивидуальные":
+  - /url: /ru/prague/category/individual
+- link "Пивные туры в Праге":
+  - /url: /ru/prague/category/pivnye-tury-v-prage
+- link "Ротенбург":
+  - /url: /ru/prague/category/rotenburg
+- link "Групповые":
+  - /url: /ru/prague/category/group
+- link "Моравский крас":
+  - /url: /ru/prague/category/moravskiy-kras
+- link "Автобусные":
+  - /url: /ru/prague/category/bus-tours
+- link "Германия":
+  - /url: /ru/prague/category/germaniya
+- link "Бавария":
+  - /url: /ru/prague/category/bavariya
+- link "Необычные":
+  - /url: /ru/prague/category/off-the-beaten-track
+- link "246 экскурсий":
+  - /url: /ru/prague
+- link "Париж":
+  - /url: https://www.sputnik8.com/ru/paris
+- link "Обзорные":
+  - /url: /ru/paris/category/highlights
+- link "Автобусные":
+  - /url: /ru/paris/category/bus-tours
+- link "Групповые":
+  - /url: /ru/paris/category/group
+- link "Пешеходные":
+  - /url: /ru/paris/category/walking-tours
+- link "Круизы и теплоходные прогулки":
+  - /url: /ru/paris/category/cruise
+- link "Нормандия":
+  - /url: /ru/paris/category/normandiya
+- link "Индивидуальные":
+  - /url: /ru/paris/category/individual
+- link "Ночные":
+  - /url: /ru/paris/category/nochnye-ekskursii
+- link "Необычные":
+  - /url: /ru/paris/category/off-the-beaten-track
+- link "Детские":
+  - /url: /ru/paris/category/kids
+- link "По пригородам":
+  - /url: /ru/paris/category/suburbs
+- link "На сигвее":
+  - /url: /ru/paris/category/sigvey
+- link "302 экскурсии":
+  - /url: /ru/paris
+- link "Рим":
+  - /url: https://www.sputnik8.com/ru/rome
+- link "Ночные":
+  - /url: /ru/rome/category/nochnye-ekskursii
+- link "По Италии":
+  - /url: /ru/rome/category/po-italii
+- link "Обзорные":
+  - /url: /ru/rome/category/highlights
+- link "Автобусные":
+  - /url: /ru/rome/category/bus-tours
+- link "По пригородам":
+  - /url: /ru/rome/category/suburbs
+- link "Индивидуальные":
+  - /url: /ru/rome/category/individual
+- link "Групповые":
+  - /url: /ru/rome/category/group
+- link "Популярные":
+  - /url: /ru/rome/category/top10
+- link "Пешеходные":
+  - /url: /ru/rome/category/walking-tours
+- link "Необычные":
+  - /url: /ru/rome/category/off-the-beaten-track
+- link "Римские замки":
+  - /url: /ru/rome/category/rimskie-zamki
+- link "На сигвее":
+  - /url: /ru/rome/category/sigvey
+- link "246 экскурсий":
+  - /url: /ru/rome
+- link:
+  - /url: https://www.sputnik8.com/ru/barcelona
+- link "Барселона":
+  - /url: https://www.sputnik8.com/ru/barcelona
+- link "Испания":
+  - /url: /ru/countries/spain
+- link "216 экскурсий":
+  - /url: https://www.sputnik8.com/ru/barcelona
+- link:
+  - /url: https://www.sputnik8.com/ru/milan
+- link "Милан":
+  - /url: https://www.sputnik8.com/ru/milan
+- link "Италия":
+  - /url: /ru/countries/italy
+- link "122 экскурсии":
+  - /url: https://www.sputnik8.com/ru/milan
+- link:
+  - /url: https://www.sputnik8.com/ru/vienna
+- link "Вена":
+  - /url: https://www.sputnik8.com/ru/vienna
+- link "Австрия":
+  - /url: /ru/countries/austria
+- link "183 экскурсии":
+  - /url: https://www.sputnik8.com/ru/vienna
+- link:
+  - /url: https://www.sputnik8.com/ru/phuket
+- link "Пхукет":
+  - /url: https://www.sputnik8.com/ru/phuket
+- link "Таиланд":
+  - /url: /ru/countries/thailand
+- link "288 экскурсий":
+  - /url: https://www.sputnik8.com/ru/phuket
+- link:
+  - /url: https://www.sputnik8.com/ru/pattaya
+- link "Паттайя":
+  - /url: https://www.sputnik8.com/ru/pattaya
+- link "Таиланд":
+  - /url: /ru/countries/thailand
+- link "136 экскурсий":
+  - /url: https://www.sputnik8.com/ru/pattaya
+- link:
+  - /url: https://www.sputnik8.com/ru/bali
+- link "Бали":
+  - /url: https://www.sputnik8.com/ru/bali
+- link "Индонезия":
+  - /url: /ru/countries/indonesia
+- link "117 экскурсий":
+  - /url: https://www.sputnik8.com/ru/bali
+- link:
+  - /url: https://www.sputnik8.com/ru/kazan
+- link "Казань":
+  - /url: https://www.sputnik8.com/ru/kazan
+- link "Россия":
+  - /url: /ru/countries/russia
+- link "255 экскурсий":
+  - /url: https://www.sputnik8.com/ru/kazan
+- link:
+  - /url: https://www.sputnik8.com/ru/adler
+- link "Адлер":
+  - /url: https://www.sputnik8.com/ru/adler
+- link "Россия":
+  - /url: /ru/countries/russia
+- link "174 экскурсии":
+  - /url: https://www.sputnik8.com/ru/adler
+- text: Популярные города
+- link "Бангкок":
+  - /url: https://www.sputnik8.com/ru/bangkok
+- link "Мюнхен":
+  - /url: https://www.sputnik8.com/ru/munich
+- link "Будапешт":
+  - /url: https://www.sputnik8.com/ru/budapest
+- link "Минск":
+  - /url: https://www.sputnik8.com/ru/minsk
+- link "Тбилиси":
+  - /url: https://www.sputnik8.com/ru/tbilisi
+- link "Дубай":
+  - /url: https://www.sputnik8.com/ru/dubai
+- link "Нью-Йорк":
+  - /url: https://www.sputnik8.com/ru/new-york
+- link "Стамбул":
+  - /url: https://www.sputnik8.com/ru/istanbul
+- link "Венеция":
+  - /url: https://www.sputnik8.com/ru/venice
+- link "Великий Новгород":
+  - /url: https://www.sputnik8.com/ru/veliky-novgorod
+- link "Нижний Новгород":
+  - /url: https://www.sputnik8.com/ru/nizhnynovgorod
+- link "Ереван":
+  - /url: https://www.sputnik8.com/ru/yerevan
+- link "Амстердам":
+  - /url: https://www.sputnik8.com/ru/amsterdam
+- link "Баку":
+  - /url: https://www.sputnik8.com/ru/baku
+- link "Нячанг":
+  - /url: https://www.sputnik8.com/ru/nha-trang
+- link "Мадрид":
+  - /url: https://www.sputnik8.com/ru/madrid
+- link "Псков":
+  - /url: https://www.sputnik8.com/ru/pskov
+- link "Владивосток":
+  - /url: https://www.sputnik8.com/ru/vladivostok
+- link "Иерусалим":
+  - /url: https://www.sputnik8.com/ru/jerusalem
+- link "Мурманск":
+  - /url: https://www.sputnik8.com/ru/murmansk
+- link "Сиде":
+  - /url: https://www.sputnik8.com/ru/side
+- link "Махачкала":
+  - /url: https://www.sputnik8.com/ru/makhachkala
+- link "Кемер":
+  - /url: https://www.sputnik8.com/ru/kemer
+- link "Кисловодск":
+  - /url: https://www.sputnik8.com/ru/kislovodsk
+- link "Аланья":
+  - /url: https://www.sputnik8.com/ru/alanya
+- link "Сортавала":
+  - /url: https://www.sputnik8.com/ru/sortavala
+- link "Анталья":
+  - /url: https://www.sputnik8.com/ru/antalya
+- link "Каппадокия":
+  - /url: https://www.sputnik8.com/ru/cappadocia
+- link "Флоренция":
+  - /url: https://www.sputnik8.com/ru/florence
+- link "Сочи":
+  - /url: https://www.sputnik8.com/ru/sochi
+- link "Тель-Авив":
+  - /url: https://www.sputnik8.com/ru/tel-aviv
+- link "Туры на Алтае":
+  - /url: https://www.sputnik8.com/ru/altay-tours
+- link "Пятигорск":
+  - /url: https://www.sputnik8.com/ru/pyatigorsk
+- link "Ялта":
+  - /url: https://www.sputnik8.com/ru/yalta
+- link "Байкал":
+  - /url: https://www.sputnik8.com/ru/baikal
+- link "Братислава":
+  - /url: https://www.sputnik8.com/ru/bratislava
+- link "Гоа":
+  - /url: https://www.sputnik8.com/ru/goa
+- link "Астана":
+  - /url: https://www.sputnik8.com/ru/astana
+- link "Стокгольм":
+  - /url: https://www.sputnik8.com/ru/stockholm
+- link "Берлин":
+  - /url: https://www.sputnik8.com/ru/berlin
+- link "Лондон":
+  - /url: https://www.sputnik8.com/ru/london
+- link "Хельсинки":
+  - /url: https://www.sputnik8.com/ru/helsinki
+- link "Марса-Алам":
+  - /url: https://www.sputnik8.com/ru/marsa-alam
+- link "Памуккале":
+  - /url: https://www.sputnik8.com/ru/pamukkale
+- text: Наши преимущества Бесплатная отмена Бесплатная отмена за 48 часов Оплата онлайн Мы гарантируем сохранность платежей и персональных данных Мгновенное подтверждение После оплаты вы получите билет на электронную почту или телефон Честные отзывы 15 000 отзывов от наших клиентов, которым вы можете доверять
+- link "Города 1023":
+  - /url: /ru/cities
+- link "Страны 110":
+  - /url: /ru/countries
+- link "Добавить экскурсию":
+  - /url: /ru/hosts/registration
+- link "Статьи":
+  - /url: /ru/pages
+- link "Часто задаваемые вопросы":
+  - /url: /ru/faq
+- link "Подарочные сертификаты":
+  - /url: /ru/neobychnyi-podarok-ekskursiya
+- link "Скидки и акции":
+  - /url: /ru/discounts
+- link "Политика возврата билетов":
+  - /url: /ru/vozvrat
+- link "Договор оферты":
+  - /url: /ru/pages/oferta
+- link "Условия использования сайта":
+  - /url: /ru/pages/terms-for-users
+- link "Политика обработки персональных данных":
+  - /url: /ru/pages/personal-data-policy
+- link "Способы оплаты":
+  - /url: /ru/payment-methods
+- link "Курсы валют":
+  - /url: /ru/exchange-rates
+- text: Санкт-Петербург Санкт-Петербург, Большой пр. В.О. 18A, пом. 48Н Ежедневно 10:00 — 18:00 Поддержка
+- link "ВКонтакте":
+  - /url: https://vk.com/im?media=&sel=-33151951
+- link "Max":
+  - /url: https://max.ru/id7814547081_bot
+- link "hi@sputnik8.com":
+  - /url: mailto:hi@sputnik8.com
+- text: "Тысячи экскурсий по всему миру в одном приложении:"
+- link:
+  - /url: https://apps.apple.com/ru/app/sputnik8-%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D0%B8-%D0%B8-%D0%B1%D0%B8%D0%BB%D0%B5%D1%82%D1%8B/id1546863088
+- link:
+  - /url: https://play.google.com/store/apps/details?id=com.sputnik8.android
+- link:
+  - /url: https://sk.ru/
+- link "О компании":
+  - /url: /ru/about
+- link "Партнерская программа":
+  - /url: /ru/affiliate/new
+- link "Правовая информация":
+  - /url: /ru/contacts#legal
+- link "Вакансии":
+  - /url: /ru/jobs
+- link "Реквизиты":
+  - /url: /ru/pages/rekvizity
+- link "Контакты":
+  - /url: /ru/contacts
+- text: © 2012 - 2026 ООО "Спутник"  Сделано в Петербурге
+- link "English version":
+  - /url: /en
+- text: Мы используем cookie, чтобы поиск экскурсий был удобным для вас. Оставаясь на сайте, вы принимаете
+- link "условия":
+  - /url: /ru/pages/personal-data-policy#cookie
+- text: .
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '../../../util/fixtures';
+   2 | import { SputnikHome } from '../../../pages/SputnikHome.page';
+   3 |
+   4 | test.describe('Main Landing Page', () => {
+   5 |   test.beforeEach('start with landing page', async ({ sputnikHome }) => {
+   6 |     await sputnikHome.open();
+   7 |   });
+   8 |
+   9 |   test('Top Header component', async ({ sputnikHome }) => {
+  10 |     await expect(sputnikHome.topContainer.h1Header).toBeVisible();
+  11 |     await expect(sputnikHome.topContainer.leadText).toHaveText(SputnikHome.HEADER_REGEXP);
+  12 |   });
+  13 |
+  14 |   test('Moscow city pills open in the same tab and valid url', async ({ sputnikHome, request }) => {
+  15 |     await expect(sputnikHome.whichToursInMoscowPills.h1Header).toBeVisible();
+  16 |
+  17 |     // We query all pills to ensure they don't open in a new tab
+  18 |     // and verify their href destination via an API request for speed and stability.
+  19 |     const pillsLoc = sputnikHome.whichToursInMoscowPills.cityPillsGrouped;
+  20 |     const count = await pillsLoc.count();
+  21 |
+  22 |     // Instead of awaiting each request sequentially (which takes ~20s for 15 requests),
+  23 |     // we fire them all off in parallel to finish almost instantly.
+  24 |     const validationPromises = [];
+  25 |
+  26 |     for (let i = 0; i < count; i++) {
+  27 |       validationPromises.push(
+  28 |         (async () => {
+  29 |           const pill = pillsLoc.nth(i);
+  30 |
+  31 |           const hrefOfPill = await pill.getAttribute('href');
+  32 |           if (!hrefOfPill) {
+  33 |             throw new Error('Link is missing in the href attribut');
+  34 |           }
+  35 |
+  36 |           // Asserts that the element does not open in a new tab
+  37 |           const target = pill;
+  38 |           await expect(target).not.toHaveAttribute('target', '_blank');
+  39 |
+  40 |           // Verify the URL structure is valid and the endpoint is reachable
+  41 |           const shortenedUrl = hrefOfPill.split('#')[0];
+  42 |           const response = await request.get(shortenedUrl);
+> 43 |           expect(response.status()).toBe(200);
+     |                                     ^ Error: expect(received).toBe(expected) // Object.is equality
+  44 |         })(),
+  45 |       );
+  46 |     }
+  47 |
+  48 |     await Promise.all(validationPromises);
+  49 |   });
+  50 |
+  51 |   test('"Города" статистика верна и открывает новыую страницу в тойже вкладке', async ({ sputnikHome }) => {
+  52 |     await sputnikHome.scrollIntoView(sputnikHome.secondaryFooter.goroda);
+  53 |   });
+  54 | });
+  55 |
+```
