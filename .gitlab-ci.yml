@@ -1,6 +1,6 @@
 stages:
   - test
-  - deploy
+  - reporting
 
 variables:
   # Base image for most jobs
@@ -43,7 +43,7 @@ test:ui:
 # Job: Generate Allure Report
 # ---------------------------------------------------------
 pages:
-  stage: deploy
+  stage: reporting  # Publish Allure report to GitLab Pages
   image: node:$NODE_VERSION
   needs:
     - job: test:ui

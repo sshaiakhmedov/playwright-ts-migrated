@@ -33,6 +33,7 @@ export default tseslint.config(
     semi: true,
     jsx: false,
     braceStyle: '1tbs',
+    commaDangle: 'always-multiline',
   }),
   {
     rules: {

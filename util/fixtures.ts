@@ -3,6 +3,7 @@ import { ApiManager } from '../api/ApiManager';
 import { AboutCompany, SputnikHome, Legal, MvideoHome, MvideoSearchResults } from '../pages';
 import { applyPerformanceMocks } from './mockHelpers';
 import { ContactChat } from '../components/ContactChat.component';
+import { DbManager } from './DbManager';
 
 type MyFixtures = {
   api: ApiManager;
@@ -12,6 +13,7 @@ type MyFixtures = {
   contactChat: ContactChat;
   mvideoHome: MvideoHome;
   mvideoSearch: MvideoSearchResults;
+  db: DbManager;
 };
 
 const test = base.extend<MyFixtures>({
@@ -49,6 +51,10 @@ const test = base.extend<MyFixtures>({
   mvideoSearch: async ({ page }, use) => {
     const mvideoSearch = new MvideoSearchResults(page);
     await use(mvideoSearch);
+  },
+  db: async ({}, use) => {
+    const db = new DbManager('postgres://user:pass@localhost:5432/mvideo');
+    await use(db);
   },
 });
 
