@@ -16,5 +16,5 @@ COPY . .
 # Set CI environment variable to ensure headless mode and consolidated reports
 ENV CI=true
 
-# Default command to execute all tests
-CMD ["npm", "test"]
+# Default command to execute all tests (UI + API)
+CMD ["npm", "run", "test:all:chrome"]
