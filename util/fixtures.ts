@@ -1,13 +1,11 @@
 import { test as base, expect } from '@playwright/test';
 import { ApiManager } from '../api/ApiManager';
-import { ZeroConfig, DemoblazeHome, AboutCompany, SputnikHome, Legal, MvideoHome, MvideoSearchResults } from '../pages';
+import { AboutCompany, SputnikHome, Legal, MvideoHome, MvideoSearchResults } from '../pages';
 import { applyPerformanceMocks } from './mockHelpers';
 import { ContactChat } from '../components/ContactChat.component';
 
 type MyFixtures = {
   api: ApiManager;
-  zeroConfigPage: ZeroConfig;
-  demoblazeHomePage: DemoblazeHome;
   sputnikHome: SputnikHome;
   aboutCompanyPage: AboutCompany;
   legalPage: Legal;
@@ -31,14 +29,6 @@ const test = base.extend<MyFixtures>({
   legalPage: async ({ page }, use) => {
     const legalPage = new Legal(page);
     await use(legalPage);
-  },
-  zeroConfigPage: async ({ page }, use) => {
-    const zeroConfig = new ZeroConfig(page);
-    await use(zeroConfig);
-  },
-  demoblazeHomePage: async ({ page }, use) => {
-    const demoblazeHome = new DemoblazeHome(page);
-    await use(demoblazeHome);
   },
   sputnikHome: async ({ page }, use) => {
     const sputnikHome = new SputnikHome(page);

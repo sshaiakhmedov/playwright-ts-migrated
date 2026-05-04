@@ -11,7 +11,7 @@
     "test": "playwright test",
     "test:ui": "playwright test tests/ui",
     "test:api": "playwright test tests/api",
-    "test:all:chrome": "playwright test --project=chrome --project=mvideo",
+    "test:all:chrome": "playwright test --project=sputnik8 --project=mvideo",
     "spec": "node scripts/run-chrome-spec.mjs",
     "test:docker": "./run-tests.sh",
     "test:headed": "playwright test --headed",

@@ -9,7 +9,7 @@ const config: PlaywrightTestConfig = {
   fullyParallel: true,
 
   // Limit the number of workers on CI, use default locally
-  workers: process.env.CI ? 6 : 5,
+  workers: process.env.CI ? 10 : 5,
 
   // Directory for test artifacts (traces, screenshots, etc.)
   outputDir: 'test-results',
@@ -27,24 +27,17 @@ const config: PlaywrightTestConfig = {
     viewport: { width: 1920, height: 1080 }, // Enforce desktop viewport globally
     ignoreHTTPSErrors: true,
     video: 'on-first-retry',
-    screenshot: 'on',
+    screenshot: 'only-on-failure',
     launchOptions: {
-      args: ['--start-maximized'], // Tell Chrome to start maximized
+      args: ['--start-maximized'],
     },
   },
   retries: process.env.CI ? 2 : 0,
 
   projects: [
     {
-      name: 'setup',
-      testMatch: /.*\.setup\.ts/,
-      use: {
-        baseURL: 'https://www.sputnik8.com',
-      },
-    },
-    {
       expect: { timeout: 15000 },
-      name: 'chrome',
+      name: 'sputnik8',
       testDir: './tests/ui',
       testIgnore: ['**/mvideo/**'],
       use: {
@@ -60,44 +53,25 @@ const config: PlaywrightTestConfig = {
       expect: { timeout: 15000 },
       name: 'mvideo',
       testDir: './tests/ui/mvideo',
-      fullyParallel: false,
-      workers: 1,
+      fullyParallel: true,
       use: {
         browserName: 'chromium',
         baseURL: 'https://www.mvideo.ru/',
         locale: 'ru-RU',
-        viewport: { width: 1920, height: 1080 },
         navigationTimeout: 15000,
         actionTimeout: 15000,
         userAgent:
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
         launchOptions: {
-          args: [
-            '--disable-blink-features=AutomationControlled',
-          ],
+          args: ['--disable-blink-features=AutomationControlled'],
         },
       },
     },
     {
-      timeout: 90000, // whole test (ms)
-      expect: { timeout: 5000 }, // expect assertions
-      name: 'UI Tests - WebKit',
-      testDir: './tests/ui',
-      testIgnore: ['**/mvideo/**'],
-      dependencies: ['setup'],
-      use: {
-        browserName: 'webkit', // Safari support
-        baseURL: 'https://www.sputnik8.com/ru/',
-        navigationTimeout: 15000,
-        actionTimeout: 10000,
-        storageState: '.auth/user.json',
-      },
-    },
-    {
-      name: 'API Tests',
+      name: 'api',
       testDir: './tests/api',
       use: {
-        baseURL: 'https://postman-echo.com', // Different base for API
+        baseURL: 'https://postman-echo.com',
       },
       timeout: 10000,
     },
