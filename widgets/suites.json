@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"6670429afb6336ebd74364ce08414023","name":"chrome","statistic":{"failed":0,"broken":0,"skipped":8,"passed":34,"unknown":0,"total":42}}]}
+{"total":2,"items":[{"uid":"9d1594fa1f74b4d7edae160b485ba584","name":"sputnik8","statistic":{"failed":1,"broken":0,"skipped":2,"passed":21,"unknown":0,"total":24}},{"uid":"503657ff8660d3483b71cb5aa0b01e5e","name":"mvideo","statistic":{"failed":0,"broken":0,"skipped":0,"passed":10,"unknown":0,"total":10}}]}
